@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Departments | AyurQ — Quality Driven Ayurveda</title>
+  <meta name="description" content="Explore AyurQ's specialized clinical departments in Visakhapatnam, AP. Dedicated clinics for Orthopaedics, Neurology, Women's Health, Yoga, and Pediatrics.">
+  <meta name="keywords" content="Ayurvedic departments Vizag, Orthopaedic Ayurveda Visakhapatnam, Neurology clinic Vizag, Women's wellness Ayurveda AP, Yoga Visakhapatnam">
+  
+  <!-- Swiper CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!-- Departments Custom Styles -->
+  <style>
+    /* Departments Section Intro */
+    .dept-intro-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: center;
+      margin-bottom: 70px;
+    }
+    
+    .dept-intro-left h3 {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      line-height: 1.2;
+    }
+    
+    .dept-intro-left p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      margin-bottom: 20px;
+    }
+
+    .dept-intro-right {
+      background-color: var(--white);
+      border: 1px solid var(--beige);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 15px 35px var(--shadow-light);
+    }
+
+    .clinical-seal-badge {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .clinical-seal-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      background-color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--orange);
+      flex-shrink: 0;
+    }
+
+    .clinical-seal-icon svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+
+    .clinical-seal-text h5 {
+      font-family: var(--font-body);
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--green-dark);
+    }
+
+    .clinical-seal-text span {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .clinical-seal-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .clinical-seal-list li {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .clinical-seal-list li svg {
+      width: 16px;
+      height: 16px;
+      fill: var(--green);
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 900px) {
+      .dept-intro-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    /* Department Cards Grid */
+    .dept-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 40px;
+    }
+    
+    .dept-card {
+      background-color: var(--white);
+      border: 1px solid var(--beige);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 12px 36px var(--shadow-light);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    
+    .dept-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--green);
+      box-shadow: 0 20px 45px var(--shadow-medium);
+    }
+    
+    .dept-visual-wrapper {
+      height: 300px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .dept-card:hover .visual-image {
+      transform: scale(1.05);
+    }
+    
+    .dept-card-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: rgba(30, 58, 43, 0.85);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      color: var(--gold);
+      padding: 6px 16px;
+      border-radius: 30px;
+      font-family: var(--font-body);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      z-index: 5;
+    }
+    
+    .dept-content {
+      padding: 40px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .dept-content h4 {
+      font-size: 2rem;
+      color: var(--green-dark);
+      margin-bottom: 15px;
+    }
+    
+    .dept-tagline {
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 20px;
+    }
+    
+    .dept-content p {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+    
+    .dept-services-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--beige);
+    }
+    
+    .dept-services-list li {
+      font-size: 0.9rem;
+      color: var(--text);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .dept-services-list li svg {
+      width: 14px;
+      height: 14px;
+      fill: var(--green);
+      flex-shrink: 0;
+    }
+    
+    @media (max-width: 900px) {
+      .dept-cards-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .dept-content {
+        padding: 30px;
+      }
+      .dept-content h4 {
+        font-size: 1.7rem;
+      }
+    }
+    
+    /* FAQ accordion custom modifications for department therapies */
+    .faq-grid-custom {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    @media (max-width: 900px) {
+      .faq-grid-custom {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" aria-hidden="true">
+    <div class="loader-content">
+      <svg class="loader-mandala" viewBox="0 0 100 100">
+        <path d="M50 15 C55 25, 45 25, 50 15 Z M50 85 C55 75, 45 75, 50 85 Z M15 50 C25 55, 25 45, 15 50 Z M85 50 C75 55, 75 45, 85 50 Z" />
+        <path d="M50 5 C52 20, 48 20, 50 5 Z M50 95 C52 80, 48 80, 50 95 Z M5 50 C20 52, 20 48, 5 50 Z M95 50 C80 52, 80 48, 95 50 Z" />
+        <circle cx="50" cy="50" r="10" fill="none" stroke="var(--gold)" stroke-width="1" />
+      </svg>
+      <img src="Logo.png" alt="AyurQ Logo" class="loader-logo-img">
+      <div class="loader-tagline">Quality Driven Ayurveda</div>
+    </div>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="AyurQ Homepage">
+        <img src="Logo.png" alt="AyurQ Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="about.html" class="nav-link">About</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="about.html#story">Our Story</a></li>
+              <li class="dropdown-item"><a href="about.html#philosophy">Healing Philosophy</a></li>
+              <li class="dropdown-item"><a href="about.html#ayurveda">About Ayurveda</a></li>
+              <li class="dropdown-item"><a href="about.html#doctors">Our Doctors</a></li>
+              <li class="dropdown-item"><a href="about.html#facilities">Facilities</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="treatments.html" class="nav-link">Treatments</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="treatments.html#panchakarma">Panchakarma</a></li>
+              <li class="dropdown-item"><a href="treatments.html#detox">Detox Therapy</a></li>
+              <li class="dropdown-item"><a href="treatments.html#pain">Pain Management</a></li>
+              <li class="dropdown-item"><a href="treatments.html#stress">Stress Relief</a></li>
+              <li class="dropdown-item"><a href="treatments.html#weight">Weight Management</a></li>
+              <li class="dropdown-item"><a href="treatments.html#skin">Skin & Hair Care</a></li>
+              <li class="dropdown-item"><a href="treatments.html#rejuvenation">Rejuvenation Therapy</a></li>
+              <li class="dropdown-item"><a href="treatments.html#immunity">Immunity Boosting</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="departments.html" class="nav-link">Departments</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="departments.html#ortho">Orthopaedic Care</a></li>
+              <li class="dropdown-item"><a href="departments.html#neuro">Neurology</a></li>
+              <li class="dropdown-item"><a href="departments.html#ent">ENT & Eye Care</a></li>
+              <li class="dropdown-item"><a href="departments.html#mental">Mental Wellness</a></li>
+              <li class="dropdown-item"><a href="departments.html#women">Women's Wellness</a></li>
+              <li class="dropdown-item"><a href="departments.html#medicine">Internal Medicine</a></li>
+              <li class="dropdown-item"><a href="departments.html#pediatrics">Pediatrics</a></li>
+              <li class="dropdown-item"><a href="departments.html#yoga">Yoga & Naturopathy</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="packages.html" class="nav-link">Packages</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="packages.html#relaxation">Relaxation</a></li>
+              <li class="dropdown-item"><a href="packages.html#detox-prog">Detox Program</a></li>
+              <li class="dropdown-item"><a href="packages.html#rejuvenation-prog">Rejuvenation</a></li>
+              <li class="dropdown-item"><a href="packages.html#beauty">Beauty Care</a></li>
+              <li class="dropdown-item"><a href="packages.html#senior">Senior Wellness</a></li>
+              <li class="dropdown-item"><a href="packages.html#stress-prog">Stress Management</a></li>
+              <li class="dropdown-item"><a href="packages.html#swarnaprashana">Swarnaprashana</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Healing Talks</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="book-appointment.html" class="btn btn-primary nav-cta" aria-label="Book an Appointment">Book Appointment</a>
+
+      <!-- Mobile Nav Toggle Button -->
+      <button class="mobile-nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Fullscreen Overlay -->
+  <div id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-drawer">
+      <ul class="mobile-menu-list">
+        <li class="mobile-menu-item"><a href="index.html" class="mobile-menu-link">Home</a></li>
+        
+        <li class="mobile-menu-item mobile-menu-item-dropdown">
+          <a href="about.html" class="mobile-menu-link">About <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+          <ul class="mobile-submenu">
+            <li><a href="about.html#story">Our Story</a></li>
+            <li><a href="about.html#philosophy">Healing Philosophy</a></li>
+            <li><a href="about.html#ayurveda">About Ayurveda</a></li>
+            <li><a href="about.html#doctors">Our Doctors</a></li>
+            <li><a href="about.html#facilities">Facilities</a></li>
+          </ul>
+        </li>
+
+        <li class="mobile-menu-item mobile-menu-item-dropdown">
+          <a href="treatments.html" class="mobile-menu-link">Treatments <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+          <ul class="mobile-submenu">
+            <li><a href="treatments.html#panchakarma">Panchakarma</a></li>
+            <li><a href="treatments.html#detox">Detox Therapy</a></li>
+            <li><a href="treatments.html#pain">Pain Management</a></li>
+            <li><a href="treatments.html#stress">Stress Relief</a></li>
+            <li><a href="treatments.html#weight">Weight Management</a></li>
+            <li><a href="treatments.html#skin">Skin & Hair Care</a></li>
+            <li><a href="treatments.html#rejuvenation">Rejuvenation Therapy</a></li>
+            <li><a href="treatments.html#immunity">Immunity Boosting</a></li>
+          </ul>
+        </li>
+
+        <li class="mobile-menu-item mobile-menu-item-dropdown">
+          <a href="departments.html" class="mobile-menu-link">Departments <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+          <ul class="mobile-submenu">
+            <li><a href="departments.html#ortho">Orthopaedic Care</a></li>
+            <li><a href="departments.html#neuro">Neurology</a></li>
+            <li><a href="departments.html#ent">ENT & Eye Care</a></li>
+            <li><a href="departments.html#mental">Mental Wellness</a></li>
+            <li><a href="departments.html#women">Women's Wellness</a></li>
+            <li><a href="departments.html#medicine">Internal Medicine</a></li>
+            <li><a href="departments.html#pediatrics">Pediatrics</a></li>
+            <li><a href="departments.html#yoga">Yoga & Naturopathy</a></li>
+          </ul>
+        </li>
+
+        <li class="mobile-menu-item mobile-menu-item-dropdown">
+          <a href="packages.html" class="mobile-menu-link">Packages <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+          <ul class="mobile-submenu">
+            <li><a href="packages.html#relaxation">Relaxation</a></li>
+            <li><a href="packages.html#detox-prog">Detox Program</a></li>
+            <li><a href="packages.html#rejuvenation-prog">Rejuvenation</a></li>
+            <li><a href="packages.html#beauty">Beauty Care</a></li>
+            <li><a href="packages.html#senior">Senior Wellness</a></li>
+            <li><a href="packages.html#stress-prog">Stress Management</a></li>
+            <li><a href="packages.html#swarnaprashana">Swarnaprashana</a></li>
+          </ul>
+        </li>
+
+        <li class="mobile-menu-item"><a href="gallery.html" class="mobile-menu-link">Gallery</a></li>
+        <li class="mobile-menu-item"><a href="blog.html" class="mobile-menu-link">Healing Talks</a></li>
+        <li class="mobile-menu-item"><a href="contact.html" class="mobile-menu-link">Contact</a></li>
+      </ul>
+      <a href="book-appointment.html" class="btn btn-primary mobile-menu-cta" aria-label="Book an Appointment">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Standard Inner Page Hero -->
+  <section class="page-hero" aria-label="Page Header">
+    <div class="container">
+      <div class="page-hero-content reveal">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> <span>&rarr;</span> <span>Departments</span>
+        </div>
+        <h1 class="page-title font-serif">Clinical Departments</h1>
+        <p class="page-subtitle">Personalized care, authentic Kerala therapies, and complete physician supervision under classical medical divisions.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN SCROLL CONTENT -->
+  <main id="main-content">
+
+    <!-- SECTION 1: CLINICAL OVERVIEW -->
+    <section aria-label="Department Overview">
+      <div class="container">
+        <div class="dept-intro-grid">
+          <div class="dept-intro-left reveal">
+            <span class="section-label">Medical Specialization</span>
+            <h3 class="cormorant">Bridging Ayurvedic Rigour and Modern Diagnosis</h3>
+            <p>
+              At AyurQ, we firmly believe that Ayurveda is not just generic rejuvenation, but a profound and precise science of clinical therapeutics. To maintain maximum efficacy, we organize our practice into dedicated specialty departments, mimicking clinical hospital environments while retaining a serene, residential retreat atmosphere.
+            </p>
+            <p>
+              Each department is headed by an expert physician with certified hospital practice. They combine classical methods like **Nadi Pariksha** (Vedic pulse reading) with standard diagnostic markers (blood metrics, MRI scans, and physical range-of-motion assessments) to monitor and evidence your structural correction.
+            </p>
+          </div>
+          
+          <div class="dept-intro-right reveal">
+            <div class="clinical-seal-badge">
+              <div class="clinical-seal-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+              </div>
+              <div class="clinical-seal-text">
+                <h5>Clinical Excellence Quality Seal</h5>
+                <span>Pure Ayurvedic Standards</span>
+              </div>
+            </div>
+            <ul class="clinical-seal-list">
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>BAMS / MD qualified doctors only</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Pure cold-pressed medicated oils</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Sourced direct from historic Kerala houses</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Precise post-treatment monitoring</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- SPECIALIST CLINICS GRID -->
+        <div class="dept-cards-grid reveal-stagger">
+
+          <!-- Clinic 1: Ortho -->
+          <div id="ortho" class="reveal-item">
+            <div class="dept-card">
+              <div class="dept-visual-wrapper">
+                <span class="dept-card-badge">Spine & Joints</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="orthopaedic-care.png" alt="Ayurvedic Orthopaedic Treatment" class="visual-image">
+                  <div class="visual-fallback gradient-herb">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M17 8C8 10 9 21 9 21s11-1 13-9c1-4-2-4-5-4z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="dept-content">
+                <h4>Orthopaedic & Spine Care</h4>
+                <span class="dept-tagline">Asthi & Sandhi Rogas</span>
+                <p>
+                  Specialized non-surgical care targeting structural spine and joint disorders. We work to reverse chronic disc herniation, sciatica, cervical spondylosis, and osteoarthritis. Using targeted localized pool therapies, we lubricate dry joints, stimulate blood circulation, and regenerate damaged cartilage tissues safely.
+                </p>
+                <ul class="dept-services-list">
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Janu Basti (Knee Pool)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Greeva Basti (Cervical)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Kati Basti (Lumbar Pool)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Patra Pinda Sweda</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clinic 2: Neuro -->
+          <div id="neuro" class="reveal-item">
+            <div class="dept-card">
+              <div class="dept-visual-wrapper">
+                <span class="dept-card-badge">Nervous System</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="detox-therapy.jpg.png" alt="Neurological Rehabilitation Treatment" class="visual-image">
+                  <div class="visual-fallback gradient-atmosphere">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="dept-content">
+                <h4>Neurology & Rehab</h4>
+                <span class="dept-tagline">Vata Vyadhi Chikitsa</span>
+                <p>
+                  Rehabilitative therapies aimed at resolving chronic neurological and neuromuscular conditions. We provide clinical support for post-stroke recovery, hemiplegia, Parkinson's symptoms, peripheral neuropathy, and muscular dystrophy. Focused hot oil streams and systemic purges nourish depleting nerve fibers and return sensory pathways to balance.
+                </p>
+                <ul class="dept-services-list">
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Pizhichil (Oil Bath)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Shirodhara</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Njavara Kizhi</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Matra Basti</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clinic 3: Mental -->
+          <div id="mental" class="reveal-item">
+            <div class="dept-card">
+              <div class="dept-visual-wrapper">
+                <span class="dept-card-badge">Mind & Sleep</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="mental-wellness.png" alt="Ayurvedic Mental Wellness" class="visual-image">
+                  <div class="visual-fallback gradient-spice">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="dept-content">
+                <h4>Mental Wellness</h4>
+                <span class="dept-tagline">Manasa Roga Chikitsa</span>
+                <p>
+                  Holistic care to calm sensory overstimulation, reduce severe insomnia, alleviate chronic anxiety, and mitigate mental burnout. We combine organic brain-tonifying herbal mixtures (Medhya Rasayanas) with calming external therapies to soothe the sympathetic nervous system and stimulate serotonin pathways naturally.
+                </p>
+                <ul class="dept-services-list">
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Takradhara (Buttermilk)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Shiro Vasthi</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Abhyanga Massage</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Pranayama & Meditation</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clinic 4: Women's -->
+          <div id="women" class="reveal-item">
+            <div class="dept-card">
+              <div class="dept-visual-wrapper">
+                <span class="dept-card-badge">Hormones & Fertility</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="women-wellness.png" alt="Women's Gynaecology Ayurveda" class="visual-image">
+                  <div class="visual-fallback gradient-oil">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="dept-content">
+                <h4>Women's Wellness</h4>
+                <span class="dept-tagline">Prasuti & Stri Roga</span>
+                <p>
+                  Specialized care addressing PCOD, uterine fibroids, irregular menstruation, thyroid imbalances, menopause distress, and female fertility support. We concentrate on cleansing internal pathways, balancing estrogen-progesterone cycles, and strengthening uterine tissues through non-invasive classical therapies.
+                </p>
+                <ul class="dept-services-list">
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Uttar Basti (Specialized)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Yoniprakshalana</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Udvartana (Herbal Scrub)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Matra Basti</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clinic 5: Internal Medicine -->
+          <div id="medicine" class="reveal-item">
+            <div class="dept-card">
+              <div class="dept-visual-wrapper">
+                <span class="dept-card-badge">Digestion & Metabolism</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="doctor-consultation.png" alt="Internal Medicine Ayurveda" class="visual-image">
+                  <div class="visual-fallback gradient-herb">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="dept-content">
+                <h4>Internal Medicine</h4>
+                <span class="dept-tagline">Kayachikitsa</span>
+                <p>
+                  The foundation of Ayurvedic medicine, addressing metabolic syndromes, fatty liver diseases, type-2 diabetes management, IBS, chronic acidity, and auto-immune issues. By kindling the central digestive fire (Jatharagni) and eliminating deeply stored cellular toxins (Ama), we stabilize systemic metabolism permanently.
+                </p>
+                <ul class="dept-services-list">
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Virechana (Purgation)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Vamana (Emesis)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Custom Herbal Decoctions</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Pathya Food Programs</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clinic 6: ENT -->
+          <div id="ent" class="reveal-item">
+            <div class="dept-card">
+              <div class="dept-visual-wrapper">
+                <span class="dept-card-badge">Eyes, Ears & Sinus</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="about-ayurveda.png" alt="ENT and Eye Care Ayurveda" class="visual-image">
+                  <div class="visual-fallback gradient-spice">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="dept-content">
+                <h4>ENT & Eye Care</h4>
+                <span class="dept-tagline">Shalakya Tantra</span>
+                <p>
+                  Specialized therapies targeting the organs above the neck. We successfully treat chronic sinusitis, migraine, allergic rhinitis, early-stage cataracts, dry eye syndrome, and tinnitus. Nasal administrations of medicated oils clear deep congestion and strengthen localized cranial senses safely.
+                </p>
+                <ul class="dept-services-list">
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Nasya (Nasal Drops)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Netra Tarpana (Eye Pool)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Karnapoorana (Ear Pool)</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Shirodhara Stream</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clinic 7: Pediatrics -->
+          <div id="pediatrics" class="reveal-item">
+            <div class="dept-card">
+              <div class="dept-visual-wrapper">
+                <span class="dept-card-badge">Infants & Kids</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="beauty-package2.png" alt="Ayurvedic Pediatrics" class="visual-image">
+                  <div class="visual-fallback gradient-oil">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="dept-content">
+                <h4>Pediatric Wellness</h4>
+                <span class="dept-tagline">Kaumarbhritya</span>
+                <p>
+                  Specialized organic remedies supporting natural immunity, respiratory health, appetite stimulation, and cognitive growth in children. We strictly execute the traditional monthly pediatric immunization ritual (**Swarnaprashana**) utilizing pure gold microparticles, organic honey, and brain-stimulating herbs.
+                </p>
+                <ul class="dept-services-list">
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Swarnaprashana Drops</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Balaraksha Herbs</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Gentle Abhyanga</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Gut Health Tonics</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Clinic 8: Yoga -->
+          <div id="yoga" class="reveal-item">
+            <div class="dept-card">
+              <div class="dept-visual-wrapper">
+                <span class="dept-card-badge">Postural & Breath</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="yoga-naturopathy.png" alt="Yoga and Naturopathy" class="visual-image">
+                  <div class="visual-fallback gradient-herb">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="dept-content">
+                <h4>Yoga & Naturopathy</h4>
+                <span class="dept-tagline">Swasthavritta & Yoga</span>
+                <p>
+                  A vital auxiliary department locking in your clinical gains through personalized structural postures (Asanas), specific pranayama breathworks, and hydrotherapy. We design targeted routines that fit your specific spinal capacity, strengthening deep postural muscles, reducing hypertension, and stabilizing respiratory rhythms.
+                </p>
+                <ul class="dept-services-list">
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Therapeutic Yoga</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Pranayama Cleansing</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Spinal Cold Packs</li>
+                  <li><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Meditative Nidra</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: TREATED CONDITIONS & CLINICAL EVIDENCE -->
+    <section style="background-color: var(--beige);" aria-label="Treated Conditions">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Clinical Indication Index</span>
+          <h2 class="section-title">Conditions We Successfully Treat</h2>
+          <p class="section-desc">Search or locate your symptoms below to discover the target clinical department, recommended therapies, and expected recovery metrics.</p>
+        </div>
+
+        <div class="faq-grid-custom reveal-stagger">
+          
+          <!-- Condition 1 -->
+          <div class="reveal-item">
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-title">Severe Joint Pain, Herniated Disc, Sciatica</span>
+                <span class="faq-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                </span>
+              </button>
+              <div class="faq-content-wrapper">
+                <div class="faq-content">
+                  <div class="faq-content-inner">
+                    <p>
+                      <strong>Target Department:</strong> Orthopaedic & Spine Care<br>
+                      <strong>Treatment Approach:</strong> Localized warm medicated herbal oil pools (Kati Basti, Janu Basti) to rehydrate thinning intervertebral discs, followed by Patra Pinda Sweda (herbal bundle massage) to release rigid muscle spasms and soothe pinched nerves.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Condition 2 -->
+          <div class="reveal-item">
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-title">Post-Stroke Paralyzing States & Neuropathy</span>
+                <span class="faq-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                </span>
+              </button>
+              <div class="faq-content-wrapper">
+                <div class="faq-content">
+                  <div class="faq-content-inner">
+                    <p>
+                      <strong>Target Department:</strong> Neurology & Rehab<br>
+                      <strong>Treatment Approach:</strong> Deep oil bath streams (Pizhichil) combined with warm Njavara rice massage bags to stimulate peripheral motor nerves, returning metabolic nourishment and kinetic circulation to depleted muscle fibers.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Condition 3 -->
+          <div class="reveal-item">
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-title">PCOD, Gynaecological Distresses & Fertility</span>
+                <span class="faq-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                </span>
+              </button>
+              <div class="faq-content-wrapper">
+                <div class="faq-content">
+                  <div class="faq-content-inner">
+                    <p>
+                      <strong>Target Department:</strong> Women's Wellness Stri-Roga<br>
+                      <strong>Treatment Approach:</strong> Mild internal oil purges (Matra Basti) to regulate Apana Vata (the energy governing pelvic organs), complemented by vaginal sterile irrigations (Yoniprakshalana) to restore natural hormonal cycles and tissue pH.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Condition 4 -->
+          <div class="reveal-item">
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-title">Insomnia, Severe Anxiety & Chronic Stress</span>
+                <span class="faq-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                </span>
+              </button>
+              <div class="faq-content-wrapper">
+                <div class="faq-content">
+                  <div class="faq-content-inner">
+                    <p>
+                      <strong>Target Department:</strong> Mental Wellness Clinic<br>
+                      <strong>Treatment Approach:</strong> Shirodhara (warm medicated oil streams directed to the forehead) and Takradhara (cool medicated buttermilk streams) to down-regulate overstimulated adrenals, restoring peaceful sleep patterns.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Condition 5 -->
+          <div class="reveal-item">
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-title">Metabolic Slowdowns, Acidity, IBS & Colitis</span>
+                <span class="faq-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                </span>
+              </button>
+              <div class="faq-content-wrapper">
+                <div class="faq-content">
+                  <div class="faq-content-inner">
+                    <p>
+                      <strong>Target Department:</strong> Internal Medicine Kayachikitsa<br>
+                      <strong>Treatment Approach:</strong> Complete physiological detox via virechana (controlled purgation) to eliminate accumulated bile (Pitta) and toxins (Ama) from intestinal layers, followed by targeted custom herbal decoctions.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Condition 6 -->
+          <div class="reveal-item">
+            <div class="faq-item">
+              <button class="faq-trigger" aria-expanded="false">
+                <span class="faq-title">Chronic Sinusitis, Allergic Rhinitis, Migraine</span>
+                <span class="faq-icon-wrapper">
+                  <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+                </span>
+              </button>
+              <div class="faq-content-wrapper">
+                <div class="faq-content">
+                  <div class="faq-content-inner">
+                    <p>
+                      <strong>Target Department:</strong> ENT & Eye Care Shalakya<br>
+                      <strong>Treatment Approach:</strong> Instillations of medicated herbal oils directly into nasal passages (Nasya) to purge locked-in sinus cavities, combined with Netra Tarpana (medicated ghee pools over eyes) to release ocular nerve tension.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: CINEMATIC CTA BANNER -->
+    <section class="cta-banner-section" aria-label="Call to Action">
+      <div class="container">
+        <div class="cta-banner-content">
+          <h2 class="cormorant">Ready to Consult Our Medical Experts?</h2>
+          <p>Schedule a complete, non-invasive clinical evaluation (including pulse analysis) with our certified BAMS doctors in Seethammadara, Vizag.</p>
+          <div class="cta-banner-btns">
+            <a href="book-appointment.html" class="btn btn-primary">Book Consultation</a>
+            <a href="contact.html" class="btn btn-secondary">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Unified Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col reveal">
+          <a href="index.html" class="brand-logo footer-logo" aria-label="AyurQ Logo">
+            <img src="Logo.png" alt="AyurQ Logo" class="brand-logo-img">
+          </a>
+          <p class="footer-col-desc">
+            An award-winning clinical Ayurveda retreat sanctuary specializing in authentic treatments, personalized wellness programs, and holistic Panchakarma therapies. Rejuvenate naturally under clinical expertise.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 0 1-2.825.775 4.958 4.958 0 0 0 2.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 0 0-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 0 0-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.06a4.923 4.923 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.212.085 4.936 4.936 0 0 0 4.604 3.417 9.867 9.867 0 0 1-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 0 0 7.557 2.209c9.053 0 13.998-7.496 13.998-13.986 0-.21 0-.42-.015-.63A9.935 9.935 0 0 0 24 4.59z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="treatments.html">Treatments</a></li>
+            <li><a href="departments.html">Departments</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Healing Talks</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Treatments</h4>
+          <ul class="footer-links">
+            <li><a href="treatments.html#panchakarma">Panchakarma</a></li>
+            <li><a href="treatments.html#detox">Detox Therapy</a></li>
+            <li><a href="treatments.html#pain">Pain Relief</a></li>
+            <li><a href="treatments.html#stress">Stress Management</a></li>
+            <li><a href="treatments.html#skin">Skin & Hair Care</a></li>
+            <li><a href="treatments.html#rejuvenation">Rejuvenation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Contact & Location</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              <span>49-58-9/A, Green Park Colony, Seethammadara, Visakhapatnam, AP 530013</span>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.27 11.4 11.4 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.58 1 1 0 0 1-.27 1.02l-2.2 2.2z"/></svg>
+              <a href="tel:8093526669">8093526669</a>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <a href="mailto:ayurqvizag@gmail.com">ayurqvizag@gmail.com</a>
+            </div>
+          </div>
+          <form class="newsletter-form">
+            <p>Get Healing Insights in Your Inbox</p>
+            <div class="input-group">
+              <input type="email" placeholder="Your Email Address" aria-label="Email for Newsletter" required>
+              <button type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 AyurQ Ayurveda. All rights reserved.</p>
+        <p>Made with &hearts; in Visakhapatnam | Quality Driven Ayurveda</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/918093526669" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12.012 2C6.48 2 2 6.48 2 12.012c0 1.767.46 3.48 1.332 4.992L2 22l5.124-1.344c1.464.792 3.108 1.212 4.884 1.212 5.532 0 10.012-4.48 10.012-10.012C22.02 6.48 17.54 2 12.012 2zm6.18 13.908c-.24.672-1.224 1.236-1.74 1.308-.48.06-1.092.084-2.736-.588-2.1-1.02-3.444-3.144-3.552-3.288-.096-.144-.804-1.068-.804-2.028 0-.96.504-1.428.684-1.62.18-.192.396-.24.528-.24h.372c.12 0 .288-.048.444.324.168.408.576 1.404.624 1.5.048.096.084.216.012.36-.072.144-.108.24-.216.372-.108.12-.228.276-.324.372-.108.108-.228.228-.096.456.132.228.588.972 1.26 1.572.864.768 1.596 1.008 1.824 1.116.228.108.36.096.492-.06.132-.156.576-.672.732-.9.156-.228.312-.192.528-.108.216.084 1.368.648 1.608.768.24.12.396.18.456.288.06.108.06.636-.18 1.308z"/></svg>
+  </a>
+
+  <!-- CDN scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.36/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

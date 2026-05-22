@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us | AyurQ — Quality Driven Ayurveda</title>
+  <meta name="description" content="Discover AyurQ — Vizag's premium clinical Ayurveda retreat. Read our healing philosophy, meet our BAMS clinical doctors, and explore our facilities.">
+  <meta name="keywords" content="Ayurveda Vizag, AyurQ about, Ayurvedic doctors Visakhapatnam, Panchakarma facilities Vizag, Kerala Ayurveda clinic">
+  
+  <!-- Swiper CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!-- About Specific Custom Styles -->
+  <style>
+    /* Our Story Section */
+    .story-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 70px;
+      align-items: center;
+    }
+    
+    .story-left h3 {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+    }
+    
+    .story-left p {
+      color: var(--text-muted);
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+    
+    .story-right {
+      position: relative;
+      height: 500px;
+    }
+    
+    .story-composition {
+      position: absolute;
+      width: 80%;
+      height: 75%;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px var(--shadow-medium);
+      transition: var(--transition-smooth);
+    }
+    
+    .story-composition:hover {
+      transform: translateY(-8px);
+      z-index: 5;
+    }
+    
+    .story-img-1 {
+      left: 0;
+      top: 0;
+      width: 75%;
+      height: 75%;
+    }
+    
+    .story-img-2 {
+      right: 0;
+      bottom: 0;
+      width: 65%;
+      height: 65%;
+      border: 6px solid var(--cream);
+      z-index: 2;
+    }
+    
+    @media (max-width: 900px) {
+      .story-split {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .story-right {
+        height: 380px;
+        max-width: 500px;
+        margin: 0 auto;
+        width: 100%;
+      }
+    }
+    
+    /* Philosophy Pillars */
+    .philosophy-card {
+      background-color: var(--white);
+      border: 1px solid var(--beige);
+      border-radius: 16px;
+      padding: 45px 35px;
+      text-align: center;
+      box-shadow: 0 8px 24px var(--shadow-light);
+      transition: var(--transition-smooth);
+    }
+    
+    .philosophy-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      box-shadow: 0 15px 35px var(--shadow-medium);
+    }
+    
+    .philosophy-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background-color: var(--cream);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      margin: 0 auto 25px auto;
+      transition: var(--transition-smooth);
+    }
+    
+    .philosophy-card:hover .philosophy-icon {
+      background-color: var(--green);
+      color: var(--white);
+    }
+    
+    .philosophy-icon svg {
+      width: 32px;
+      height: 32px;
+      fill: currentColor;
+    }
+    
+    .philosophy-card h4 {
+      font-size: 1.6rem;
+      color: var(--green-dark);
+      margin-bottom: 15px;
+    }
+    
+    .philosophy-card p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    
+    /* Ayurveda Doshas */
+    .dosha-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .dosha-card {
+      border-radius: 16px;
+      padding: 40px;
+      color: var(--cream);
+      box-shadow: 0 10px 30px var(--shadow-medium);
+      transition: var(--transition-smooth);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+    
+    .dosha-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px var(--shadow-dark);
+    }
+    
+    .dosha-card h4 {
+      font-size: 2rem;
+      color: var(--white);
+      margin-bottom: 5px;
+    }
+    
+    .dosha-element {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      display: block;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    
+    .dosha-card p {
+      font-size: 0.95rem;
+      opacity: 0.85;
+      line-height: 1.6;
+    }
+    
+    @media (max-width: 900px) {
+      .dosha-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Doctors Profiles */
+    .doctor-card {
+      background-color: var(--white);
+      border: 1px solid var(--beige);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px var(--shadow-light);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .doctor-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--green);
+      box-shadow: 0 15px 35px var(--shadow-medium);
+    }
+    
+    .doctor-avatar-wrapper {
+      height: 280px;
+      position: relative;
+    }
+    
+    .doctor-card-content {
+      padding: 30px;
+      text-align: center;
+      flex-grow: 1;
+    }
+    
+    .doctor-card h4 {
+      font-size: 1.6rem;
+      color: var(--green-dark);
+      margin-bottom: 5px;
+    }
+    
+    .doctor-designation {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--orange);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 12px;
+    }
+    
+    .doctor-specialty {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    
+    /* Facilities Grid */
+    .facility-card {
+      background-color: var(--white);
+      border: 1px solid var(--beige);
+      border-radius: 16px;
+      padding: 30px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      box-shadow: 0 8px 24px var(--shadow-light);
+      transition: var(--transition-smooth);
+    }
+    
+    .facility-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--gold);
+      box-shadow: 0 12px 28px var(--shadow-medium);
+    }
+    
+    .facility-icon-wrapper {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--cream);
+      color: var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    
+    .facility-icon-wrapper svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+    }
+    
+    .facility-details h4 {
+      font-size: 1.35rem;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+    
+    .facility-details p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    
+    /* Stats Bar */
+    .stats-bar-section {
+      background-color: var(--green-deep);
+      color: var(--cream);
+      padding: 60px 0;
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+    }
+    
+    .stats-bar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      text-align: center;
+    }
+    
+    .stats-bar-item .counter-number {
+      font-size: 3.5rem;
+      color: var(--gold);
+      margin-bottom: 5px;
+    }
+    
+    .stats-bar-item .counter-title {
+      color: rgba(248, 244, 234, 0.85);
+      font-size: 0.95rem;
+      letter-spacing: 2px;
+    }
+    
+    @media (max-width: 768px) {
+      .stats-bar-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" aria-hidden="true">
+    <div class="loader-content">
+      <svg class="loader-mandala" viewBox="0 0 100 100">
+        <path d="M50 15 C55 25, 45 25, 50 15 Z M50 85 C55 75, 45 75, 50 85 Z M15 50 C25 55, 25 45, 15 50 Z M85 50 C75 55, 75 45, 85 50 Z" />
+        <path d="M50 5 C52 20, 48 20, 50 5 Z M50 95 C52 80, 48 80, 50 95 Z M5 50 C20 52, 20 48, 5 50 Z M95 50 C80 52, 80 48, 95 50 Z" />
+        <circle cx="50" cy="50" r="10" fill="none" stroke="var(--gold)" stroke-width="1" />
+      </svg>
+      <img src="Logo.png" alt="AyurQ Logo" class="loader-logo-img">
+      <div class="loader-tagline">Quality Driven Ayurveda</div>
+    </div>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="AyurQ Homepage">
+        <img src="Logo.png" alt="AyurQ Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="about.html" class="nav-link">About</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="about.html#story">Our Story</a></li>
+              <li class="dropdown-item"><a href="about.html#philosophy">Healing Philosophy</a></li>
+              <li class="dropdown-item"><a href="about.html#ayurveda">About Ayurveda</a></li>
+              <li class="dropdown-item"><a href="about.html#doctors">Our Doctors</a></li>
+              <li class="dropdown-item"><a href="about.html#facilities">Facilities</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="treatments.html" class="nav-link">Treatments</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="treatments.html#panchakarma">Panchakarma</a></li>
+              <li class="dropdown-item"><a href="treatments.html#detox">Detox Therapy</a></li>
+              <li class="dropdown-item"><a href="treatments.html#pain">Pain Management</a></li>
+              <li class="dropdown-item"><a href="treatments.html#stress">Stress Relief</a></li>
+              <li class="dropdown-item"><a href="treatments.html#weight">Weight Management</a></li>
+              <li class="dropdown-item"><a href="treatments.html#skin">Skin & Hair Care</a></li>
+              <li class="dropdown-item"><a href="treatments.html#rejuvenation">Rejuvenation Therapy</a></li>
+              <li class="dropdown-item"><a href="treatments.html#immunity">Immunity Boosting</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="departments.html" class="nav-link">Departments</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="departments.html#ortho">Orthopaedic Care</a></li>
+              <li class="dropdown-item"><a href="departments.html#neuro">Neurology</a></li>
+              <li class="dropdown-item"><a href="departments.html#ent">ENT & Eye Care</a></li>
+              <li class="dropdown-item"><a href="departments.html#mental">Mental Wellness</a></li>
+              <li class="dropdown-item"><a href="departments.html#women">Women's Wellness</a></li>
+              <li class="dropdown-item"><a href="departments.html#medicine">Internal Medicine</a></li>
+              <li class="dropdown-item"><a href="departments.html#pediatrics">Pediatrics</a></li>
+              <li class="dropdown-item"><a href="departments.html#yoga">Yoga & Naturopathy</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="packages.html" class="nav-link">Packages</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="packages.html#relaxation">Relaxation</a></li>
+              <li class="dropdown-item"><a href="packages.html#detox-prog">Detox Program</a></li>
+              <li class="dropdown-item"><a href="packages.html#rejuvenation-prog">Rejuvenation</a></li>
+              <li class="dropdown-item"><a href="packages.html#beauty">Beauty Care</a></li>
+              <li class="dropdown-item"><a href="packages.html#senior">Senior Wellness</a></li>
+              <li class="dropdown-item"><a href="packages.html#stress-prog">Stress Management</a></li>
+              <li class="dropdown-item"><a href="packages.html#swarnaprashana">Swarnaprashana</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Healing Talks</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="book-appointment.html" class="btn btn-primary nav-cta" aria-label="Book an Appointment">Book Appointment</a>
+
+      <!-- Mobile Nav Toggle Button -->
+      <button class="mobile-nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Fullscreen Overlay -->
+  <div id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-drawer">
+    <ul class="mobile-menu-list">
+      <li class="mobile-menu-item"><a href="index.html" class="mobile-menu-link">Home</a></li>
+      
+      <li class="mobile-menu-item mobile-menu-item-dropdown">
+        <a href="about.html" class="mobile-menu-link">About <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+        <ul class="mobile-submenu">
+          <li><a href="about.html#story">Our Story</a></li>
+          <li><a href="about.html#philosophy">Healing Philosophy</a></li>
+          <li><a href="about.html#ayurveda">About Ayurveda</a></li>
+          <li><a href="about.html#doctors">Our Doctors</a></li>
+          <li><a href="about.html#facilities">Facilities</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-menu-item mobile-menu-item-dropdown">
+        <a href="treatments.html" class="mobile-menu-link">Treatments <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+        <ul class="mobile-submenu">
+          <li><a href="treatments.html#panchakarma">Panchakarma</a></li>
+          <li><a href="treatments.html#detox">Detox Therapy</a></li>
+          <li><a href="treatments.html#pain">Pain Management</a></li>
+          <li><a href="treatments.html#stress">Stress Relief</a></li>
+          <li><a href="treatments.html#weight">Weight Management</a></li>
+          <li><a href="treatments.html#skin">Skin & Hair Care</a></li>
+          <li><a href="treatments.html#rejuvenation">Rejuvenation Therapy</a></li>
+          <li><a href="treatments.html#immunity">Immunity Boosting</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-menu-item mobile-menu-item-dropdown">
+        <a href="departments.html" class="mobile-menu-link">Departments <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+        <ul class="mobile-submenu">
+          <li><a href="departments.html#ortho">Orthopaedic Care</a></li>
+          <li><a href="departments.html#neuro">Neurology</a></li>
+          <li><a href="departments.html#ent">ENT & Eye Care</a></li>
+          <li><a href="departments.html#mental">Mental Wellness</a></li>
+          <li><a href="departments.html#women">Women's Wellness</a></li>
+          <li><a href="departments.html#medicine">Internal Medicine</a></li>
+          <li><a href="departments.html#pediatrics">Pediatrics</a></li>
+          <li><a href="departments.html#yoga">Yoga & Naturopathy</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-menu-item mobile-menu-item-dropdown">
+        <a href="packages.html" class="mobile-menu-link">Packages <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+        <ul class="mobile-submenu">
+          <li><a href="packages.html#relaxation">Relaxation</a></li>
+          <li><a href="packages.html#detox-prog">Detox Program</a></li>
+          <li><a href="packages.html#rejuvenation-prog">Rejuvenation</a></li>
+          <li><a href="packages.html#beauty">Beauty Care</a></li>
+          <li><a href="packages.html#senior">Senior Wellness</a></li>
+          <li><a href="packages.html#stress-prog">Stress Management</a></li>
+          <li><a href="packages.html#swarnaprashana">Swarnaprashana</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-menu-item"><a href="gallery.html" class="mobile-menu-link">Gallery</a></li>
+      <li class="mobile-menu-item"><a href="blog.html" class="mobile-menu-link">Healing Talks</a></li>
+      <li class="mobile-menu-item"><a href="contact.html" class="mobile-menu-link">Contact</a></li>
+    </ul>
+    <a href="book-appointment.html" class="btn btn-primary mobile-menu-cta" aria-label="Book an Appointment">Book Appointment</a>
+  </div>
+  </div>
+
+  <!-- Standard Inner Page Hero -->
+  <section class="page-hero" aria-label="Page Header">
+    <div class="container">
+      <div class="page-hero-content reveal">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> <span>&rarr;</span> <span>About Us</span>
+        </div>
+        <h1 class="page-title font-serif">About AyurQ</h1>
+        <p class="page-subtitle">Kerala Ayurveda meets modern luxury wellness — clinical excellence with serene sanctuary.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN SCROLL CONTENT -->
+  <main id="main-content">
+
+    <!-- SECTION 2: OUR STORY -->
+    <section id="story" aria-label="Our Story">
+      <div class="container">
+        <div class="story-split">
+          <div class="story-left reveal">
+            <span class="section-label">A Legacy of Restoration</span>
+            <h3 class="cormorant">Sustaining Purity: The AyurQ Narrative</h3>
+            <p>
+              Founded on the belief that modern medicine often manages symptoms while neglecting structural balance, AyurQ was born to protect and practice pure, uncompromised Ayurveda. Located in Visakhapatnam, Andhra Pradesh, we serve as an award-winning center for authentic Kerala therapies and clinical excellence.
+            </p>
+            <p>
+              Our name represents **"Quality Driven Ayurveda"** — a vow that governs every aspect of our retreat. From importing organically gathered leaves and traditionally cold-pressed oils directly from Kerala, to employing strictly BAMS-trained medical directors, we ensure that clinical protocols conform strictly to Vedic texts.
+            </p>
+            <p>
+              In our serene retreat, clinical rigour and modern safety protocols merge with a luxurious, peaceful environment. We offer a haven where your body is purified, your mind is stilled, and your innate vitality is fully restored naturally.
+            </p>
+          </div>
+
+          <div class="story-right reveal">
+            <!-- Composition Visuals -->
+            <div class="story-composition story-img-1">
+              <div class="visual-container" style="height:100%">
+                <img src="about-ayurveda.png" alt="Clinical Consultations" class="visual-image">
+                <div class="visual-fallback gradient-herb">
+                  <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M17 8C8 10 9 21 9 21s11-1 13-9c1-4-2-4-5-4z"/></svg>
+                </div>
+              </div>
+            </div>
+            <div class="story-composition story-img-2">
+              <div class="visual-container" style="height:100%">
+                <img src="doctor-consultation.png" alt="Ayurvedic Herbs Preparation" class="visual-image">
+                <div class="visual-fallback gradient-oil">
+                  <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 3: HEALING PHILOSOPHY -->
+    <section id="philosophy" style="background-color: var(--beige);" aria-label="Our Healing Philosophy">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Core Philosophy</span>
+          <h2 class="section-title">The Three Pillars of Alignment</h2>
+          <p class="section-desc">Our medical practice rests on three fundamental phases to guarantee true restoration, metabolic longevity, and permanent symptom release.</p>
+        </div>
+
+        <div class="grid-3 reveal-stagger">
+          
+          <!-- Pillar 1 -->
+          <div class="reveal-item">
+            <div class="philosophy-card">
+              <div class="philosophy-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+              </div>
+              <h4>1. Precise Diagnosis</h4>
+              <p>Through traditional Nadi Pariksha (pulse reading) and physical analysis, our doctors identify the core imbalances (Vikriti) rather than just cataloging physical symptoms.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 2 -->
+          <div class="reveal-item">
+            <div class="philosophy-card">
+              <div class="philosophy-icon">
+                <svg viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 0 1-2.827 0l-4.244-4.243a8 8 0 1 1 11.314 0z"/></svg>
+              </div>
+              <h4>2. Targeted Therapy</h4>
+              <p>Using classical Kerala clinical methods, we execute physician-guided Panchakarma and oil routines to draw deep metabolic toxins from tissue layers safely.</p>
+            </div>
+          </div>
+
+          <!-- Pillar 3 -->
+          <div class="reveal-item">
+            <div class="philosophy-card">
+              <div class="philosophy-icon">
+                <svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 0 0-9 9c0 4.97 4.03 9 9 9s9-4.03 9-9a9 9 0 0 0-9-9zm0 15a6 6 0 1 1 0-12 6 6 0 0 1 0 12z"/></svg>
+              </div>
+              <h4>3. Sustained Lifestyle</h4>
+              <p>We lock in your therapeutic gains by prescribing customized food regimes (Pathya), organic herbs, and simple daily habits tailored to your elemental constitution.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 4: ABOUT AYURVEDA & DOSHAS -->
+    <section id="ayurveda" aria-label="Understanding Ayurveda and the Doshas">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Universal Elemental Principles</span>
+          <h2 class="section-title">The Three Biological Energies</h2>
+          <p class="section-desc">AyurQ restores balance by aligning the three governing principles (Doshas) that shape your biological structure, digestion, and temperamental patterns.</p>
+        </div>
+
+        <div class="dosha-grid reveal-stagger">
+          
+          <!-- Vata -->
+          <div class="reveal-item">
+            <div class="dosha-card gradient-oil">
+              <h4>Vata Dosha</h4>
+              <span class="dosha-element">Space & Air</span>
+              <p>
+                Governs all physiological movement, nervous impulses, circulation, and breathing. When balanced, it fuels standard creative expression, lightness, and mental alertness. When disturbed, it triggers joint dryness, chronic insomnia, and nervous anxiety.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pitta -->
+          <div class="reveal-item">
+            <div class="dosha-card gradient-spice">
+              <h4>Pitta Dosha</h4>
+              <span class="dosha-element">Fire & Water</span>
+              <p>
+                Controls all metabolic digestion, enzymatic transformations, hormonal balance, and temperature regulation. When aligned, it fosters sharp intellect, strong digestion, and drive. When blocked, it sparks inflammatory conditions, acid reflux, and sudden irritability.
+              </p>
+            </div>
+          </div>
+
+          <!-- Kapha -->
+          <div class="reveal-item">
+            <div class="dosha-card gradient-herb">
+              <h4>Kapha Dosha</h4>
+              <span class="dosha-element">Water & Earth</span>
+              <p>
+                Maintains physical structure, joint lubrication, immunity, and tissue fluid levels. When balanced, it builds bodily strength, emotional patience, and deep immunity. When excessive, it leads to metabolic sluggishness, fluid retention, weight gain, and mental congestion.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- STATS BAR SECTION -->
+    <section class="stats-bar-section reveal" aria-label="AyurQ Stats Counter">
+      <div class="container">
+        <div class="stats-bar-grid">
+          <div class="stats-bar-item">
+            <div class="counter-number" data-target="5000" data-suffix="+">0</div>
+            <div class="counter-title">Patients Healed</div>
+          </div>
+          <div class="stats-bar-item">
+            <div class="counter-number" data-target="15" data-suffix="+">0</div>
+            <div class="counter-title">Expert Therapists</div>
+          </div>
+          <div class="stats-bar-item">
+            <div class="counter-number" data-target="30" data-suffix="+">0</div>
+            <div class="counter-title">Treatments</div>
+          </div>
+          <div class="stats-bar-item">
+            <div class="counter-number" data-target="8" data-suffix="+">0</div>
+            <div class="counter-title">Years Experience</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 5: OUR DOCTORS -->
+    <section id="doctors" aria-label="Our Clinical Doctors">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Medical Experts</span>
+          <h2 class="section-title">Our BAMS Clinical Doctors</h2>
+          <p class="section-desc">Meet our highly decorated clinical directors holding standard BAMS and MD degrees, bringing decades of classical hospital experience to Vizag.</p>
+        </div>
+
+        <div class="grid-3 reveal-stagger">
+          
+          <!-- Doctor 1 -->
+          <div class="reveal-item">
+            <div class="doctor-card">
+              <div class="doctor-avatar-wrapper">
+                <div class="visual-fallback gradient-herb" style="width:100%; height:100%;">
+                  <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                </div>
+              </div>
+              <div class="doctor-card-content">
+                <h4>Dr. A. Sridhar</h4>
+                <span class="doctor-designation">Chief Medical Director</span>
+                <p class="doctor-specialty">BAMS, MD (Ayurveda)<br>20+ Years Clinical Practice<br>Specialist in Chronic Orthopaedic & Spine Care</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 2 -->
+          <div class="reveal-item">
+            <div class="doctor-card">
+              <div class="doctor-avatar-wrapper">
+                <div class="visual-fallback gradient-oil" style="width:100%; height:100%;">
+                  <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                </div>
+              </div>
+              <div class="doctor-card-content">
+                <h4>Dr. K. Haritha</h4>
+                <span class="doctor-designation">Senior Physician</span>
+                <p class="doctor-specialty">BAMS (Kerala Ayurveda)<br>12+ Years Clinical Practice<br>Specialist in Panchakarma Detox & Gynaecological Health</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Doctor 3 -->
+          <div class="reveal-item">
+            <div class="doctor-card">
+              <div class="doctor-avatar-wrapper">
+                <div class="visual-fallback gradient-atmosphere" style="width:100%; height:100%;">
+                  <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                </div>
+              </div>
+              <div class="doctor-card-content">
+                <h4>Dr. S. Anjaneyulu</h4>
+                <span class="doctor-designation">Lifestyle & Yoga Director</span>
+                <p class="doctor-specialty">BAMS, PGDY (Yoga & Naturopathy)<br>10+ Years Practice<br>Specialist in Metabolic Diseases & Mental Wellness</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 6: FACILITIES -->
+    <section id="facilities" style="background-color: var(--beige);" aria-label="Retreat Facilities">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Aesthetic Sanctuary</span>
+          <h2 class="section-title">Our Retreat Facilities</h2>
+          <p class="section-desc">Explore our beautifully styled residential clinical sanctuary designed to nurture calm sensory pathways and peaceful introspection.</p>
+        </div>
+
+        <div class="grid-2 reveal-stagger">
+          
+          <!-- Facility 1 -->
+          <div class="reveal-item">
+            <div class="facility-card">
+              <div class="facility-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+              </div>
+              <div class="facility-details">
+                <h4>Traditional Therapy Rooms</h4>
+                <p>Equipped with authentic wooden massage tables (Droni) carved from neem and medicinal woods, supporting classical oil treatments under perfect hygiene.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Facility 2 -->
+          <div class="reveal-item">
+            <div class="facility-card">
+              <div class="facility-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+              </div>
+              <div class="facility-details">
+                <h4>In-House Herbal Pharmacy</h4>
+                <p>Stocks completely genuine, clinically certified arishtas, churnas, and custom oils sourced directly from historic Kerala pharmaceutical repositories.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Facility 3 -->
+          <div class="reveal-item">
+            <div class="facility-card">
+              <div class="facility-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+              </div>
+              <div class="facility-details">
+                <h4>Private Consultation Suites</h4>
+                <p>Soundproofed, comfortable suites where patients converse with our clinical doctors in complete confidence and comfort.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Facility 4 -->
+          <div class="reveal-item">
+            <div class="facility-card">
+              <div class="facility-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H9v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
+              </div>
+              <div class="facility-details">
+                <h4>Earthy Yoga & Meditation Hall</h4>
+                <p>A tranquil, high-ceilinged space overlooking our clinical gardens, dedicated to restorative yoga, breathing (Pranayama), and quiet mindfulness.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <!-- SECTION 8: CINEMATIC CTA BANNER -->
+    <section class="cta-banner-section" aria-label="Call to Action">
+      <div class="container">
+        <div class="cta-banner-content">
+          <h2 class="cormorant">Begin Your Healing Journey Naturally</h2>
+          <p>Experience authentic, physician-guided Ayurveda therapies designed to bring sustainable clarity, systemic health, and lasting body-mind alignment.</p>
+          <div class="cta-banner-btns">
+            <a href="book-appointment.html" class="btn btn-primary">Book Appointment</a>
+            <a href="contact.html" class="btn btn-secondary">Contact Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Unified Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col reveal">
+          <a href="index.html" class="brand-logo footer-logo" aria-label="AyurQ Logo">
+            <img src="Logo.png" alt="AyurQ Logo" class="brand-logo-img">
+          </a>
+          <p class="footer-col-desc">
+            An award-winning clinical Ayurveda retreat sanctuary specializing in authentic treatments, personalized wellness programs, and holistic Panchakarma therapies. Rejuvenate naturally under clinical expertise.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 0 1-2.825.775 4.958 4.958 0 0 0 2.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 0 0-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 0 0-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.06a4.923 4.923 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.212.085 4.936 4.936 0 0 0 4.604 3.417 9.867 9.867 0 0 1-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 0 0 7.557 2.209c9.053 0 13.998-7.496 13.998-13.986 0-.21 0-.42-.015-.63A9.935 9.935 0 0 0 24 4.59z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="treatments.html">Treatments</a></li>
+            <li><a href="departments.html">Departments</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Healing Talks</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Treatments</h4>
+          <ul class="footer-links">
+            <li><a href="treatments.html#panchakarma">Panchakarma</a></li>
+            <li><a href="treatments.html#detox">Detox Therapy</a></li>
+            <li><a href="treatments.html#pain">Pain Relief</a></li>
+            <li><a href="treatments.html#stress">Stress Management</a></li>
+            <li><a href="treatments.html#skin">Skin & Hair Care</a></li>
+            <li><a href="treatments.html#rejuvenation">Rejuvenation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Contact & Location</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              <span>49-58-9/A, Green Park Colony, Seethammadara, Visakhapatnam, AP 530013</span>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.27 11.4 11.4 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.58 1 1 0 0 1-.27 1.02l-2.2 2.2z"/></svg>
+              <a href="tel:8093526669">8093526669</a>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <a href="mailto:ayurqvizag@gmail.com">ayurqvizag@gmail.com</a>
+            </div>
+          </div>
+          <form class="newsletter-form">
+            <p>Get Healing Insights in Your Inbox</p>
+            <div class="input-group">
+              <input type="email" placeholder="Your Email Address" aria-label="Email for Newsletter" required>
+              <button type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 AyurQ Ayurveda. All rights reserved.</p>
+        <p>Made with &hearts; in Visakhapatnam | Quality Driven Ayurveda</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/918093526669" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12.012 2C6.48 2 2 6.48 2 12.012c0 1.767.46 3.48 1.332 4.992L2 22l5.124-1.344c1.464.792 3.108 1.212 4.884 1.212 5.532 0 10.012-4.48 10.012-10.012C22.02 6.48 17.54 2 12.012 2zm6.18 13.908c-.24.672-1.224 1.236-1.74 1.308-.48.06-1.092.084-2.736-.588-2.1-1.02-3.444-3.144-3.552-3.288-.096-.144-.804-1.068-.804-2.028 0-.96.504-1.428.684-1.62.18-.192.396-.24.528-.24h.372c.12 0 .288-.048.444.324.168.408.576 1.404.624 1.5.048.096.084.216.012.36-.072.144-.108.24-.216.372-.108.12-.228.276-.324.372-.108.108-.228.228-.096.456.132.228.588.972 1.26 1.572.864.768 1.596 1.008 1.824 1.116.228.108.36.096.492-.06.132-.156.576-.672.732-.9.156-.228.312-.192.528-.108.216.084 1.368.648 1.608.768.24.12.396.18.456.288.06.108.06.636-.18 1.308z"/></svg>
+  </a>
+
+  <!-- CDN scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.36/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

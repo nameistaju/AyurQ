@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wellness Packages | AyurQ — Quality Driven Ayurveda</title>
+  <meta name="description" content="Discover clinical Ayurvedic packages at AyurQ, Visakhapatnam. Customized programs for Detox, Relaxation, Senior Wellness, Stress Management, and Swarnaprashana.">
+  <meta name="keywords" content="Ayurvedic packages Vizag, Panchakarma packages Visakhapatnam, Detox retreat AP, Swarnaprashana Vizag, Stress relief package AP">
+  
+  <!-- Swiper CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!-- Packages Custom Styles -->
+  <style>
+    /* Packages Grid */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-top: 40px;
+    }
+    
+    .package-card {
+      background-color: var(--white);
+      border: 1px solid var(--beige);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px var(--shadow-light);
+      transition: var(--transition-smooth);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+    
+    .package-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+      box-shadow: 0 18px 40px var(--shadow-medium);
+    }
+    
+    .package-visual {
+      height: 250px;
+      position: relative;
+    }
+    
+    .package-badge {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background-color: var(--orange);
+      color: var(--white);
+      padding: 5px 15px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-family: var(--font-body);
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      z-index: 5;
+    }
+    
+    .package-content {
+      padding: 35px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    
+    .package-content h4 {
+      font-size: 1.8rem;
+      color: var(--green-dark);
+      margin-bottom: 5px;
+    }
+    
+    .package-sanskrit {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 20px;
+    }
+    
+    .package-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+    
+    .package-meta-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      border-top: 1px solid var(--beige);
+      border-bottom: 1px solid var(--beige);
+      padding: 20px 0;
+      margin-bottom: 25px;
+      margin-top: auto;
+    }
+    
+    .package-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+    
+    .package-meta-item svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--green);
+      flex-shrink: 0;
+    }
+    
+    .package-price-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+    }
+    
+    .package-duration-tag {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      background-color: var(--cream);
+      padding: 4px 12px;
+      border-radius: 4px;
+      border: 1px solid var(--beige);
+    }
+    
+    .package-price-tag {
+      font-family: var(--font-body);
+      font-size: 1.4rem;
+      color: var(--green-dark);
+      font-weight: 700;
+    }
+    
+    .package-card .btn {
+      width: 100%;
+      padding: 12px 24px;
+      font-size: 0.85rem;
+    }
+    
+    @media (max-width: 1024px) {
+      .packages-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .packages-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .package-content {
+        padding: 30px;
+      }
+    }
+    
+    /* Swarnaprashana Section */
+    .swarna-section {
+      background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-dark) 100%);
+      color: var(--cream);
+      position: relative;
+    }
+    
+    .swarna-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(var(--white-overlay) 1px, transparent 1px);
+      background-size: 24px 24px;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+    
+    .swarna-split {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 70px;
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .swarna-left h3 {
+      font-size: 2.8rem;
+      color: var(--white);
+      margin-bottom: 25px;
+    }
+    
+    .swarna-left p {
+      color: rgba(248, 244, 234, 0.85);
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+    
+    .swarna-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 30px;
+    }
+    
+    .swarna-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 15px;
+      font-size: 1rem;
+    }
+    
+    .swarna-features li svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--gold);
+      margin-top: 4px;
+      flex-shrink: 0;
+    }
+    
+    .swarna-features li strong {
+      color: var(--white);
+    }
+    
+    .swarna-right-card {
+      background-color: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 24px;
+      padding: 50px 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    
+    .swarna-right-card h4 {
+      font-size: 2.2rem;
+      color: var(--gold);
+      margin-bottom: 10px;
+    }
+    
+    .swarna-sub {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--white);
+      font-family: var(--font-body);
+      margin-bottom: 25px;
+      display: block;
+    }
+    
+    .swarna-right-card p {
+      font-size: 0.95rem;
+      opacity: 0.8;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    
+    .pushya-box {
+      background-color: rgba(242, 140, 40, 0.12);
+      border: 1px dashed var(--orange);
+      padding: 15px 20px;
+      border-radius: 12px;
+      font-family: var(--font-body);
+      color: var(--orange);
+      font-weight: 600;
+      margin-bottom: 30px;
+      font-size: 0.92rem;
+      letter-spacing: 1px;
+    }
+    
+    @media (max-width: 900px) {
+      .swarna-split {
+        grid-template-columns: 1fr;
+        gap: 50px;
+      }
+      .swarna-right-card {
+        padding: 35px 25px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" aria-hidden="true">
+    <div class="loader-content">
+      <svg class="loader-mandala" viewBox="0 0 100 100">
+        <path d="M50 15 C55 25, 45 25, 50 15 Z M50 85 C55 75, 45 75, 50 85 Z M15 50 C25 55, 25 45, 15 50 Z M85 50 C75 55, 75 45, 85 50 Z" />
+        <path d="M50 5 C52 20, 48 20, 50 5 Z M50 95 C52 80, 48 80, 50 95 Z M5 50 C20 52, 20 48, 5 50 Z M95 50 C80 52, 80 48, 95 50 Z" />
+        <circle cx="50" cy="50" r="10" fill="none" stroke="var(--gold)" stroke-width="1" />
+      </svg>
+      <img src="Logo.png" alt="AyurQ Logo" class="loader-logo-img">
+      <div class="loader-tagline">Quality Driven Ayurveda</div>
+    </div>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="AyurQ Homepage">
+        <img src="Logo.png" alt="AyurQ Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="about.html" class="nav-link">About</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="about.html#story">Our Story</a></li>
+              <li class="dropdown-item"><a href="about.html#philosophy">Healing Philosophy</a></li>
+              <li class="dropdown-item"><a href="about.html#ayurveda">About Ayurveda</a></li>
+              <li class="dropdown-item"><a href="about.html#doctors">Our Doctors</a></li>
+              <li class="dropdown-item"><a href="about.html#facilities">Facilities</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="treatments.html" class="nav-link">Treatments</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="treatments.html#panchakarma">Panchakarma</a></li>
+              <li class="dropdown-item"><a href="treatments.html#detox">Detox Therapy</a></li>
+              <li class="dropdown-item"><a href="treatments.html#pain">Pain Management</a></li>
+              <li class="dropdown-item"><a href="treatments.html#stress">Stress Relief</a></li>
+              <li class="dropdown-item"><a href="treatments.html#weight">Weight Management</a></li>
+              <li class="dropdown-item"><a href="treatments.html#skin">Skin & Hair Care</a></li>
+              <li class="dropdown-item"><a href="treatments.html#rejuvenation">Rejuvenation Therapy</a></li>
+              <li class="dropdown-item"><a href="treatments.html#immunity">Immunity Boosting</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="departments.html" class="nav-link">Departments</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="departments.html#ortho">Orthopaedic Care</a></li>
+              <li class="dropdown-item"><a href="departments.html#neuro">Neurology</a></li>
+              <li class="dropdown-item"><a href="departments.html#ent">ENT & Eye Care</a></li>
+              <li class="dropdown-item"><a href="departments.html#mental">Mental Wellness</a></li>
+              <li class="dropdown-item"><a href="departments.html#women">Women's Wellness</a></li>
+              <li class="dropdown-item"><a href="departments.html#medicine">Internal Medicine</a></li>
+              <li class="dropdown-item"><a href="departments.html#pediatrics">Pediatrics</a></li>
+              <li class="dropdown-item"><a href="departments.html#yoga">Yoga & Naturopathy</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="packages.html" class="nav-link">Packages</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="packages.html#relaxation">Relaxation</a></li>
+              <li class="dropdown-item"><a href="packages.html#detox-prog">Detox Program</a></li>
+              <li class="dropdown-item"><a href="packages.html#rejuvenation-prog">Rejuvenation</a></li>
+              <li class="dropdown-item"><a href="packages.html#beauty">Beauty Care</a></li>
+              <li class="dropdown-item"><a href="packages.html#senior">Senior Wellness</a></li>
+              <li class="dropdown-item"><a href="packages.html#stress-prog">Stress Management</a></li>
+              <li class="dropdown-item"><a href="packages.html#swarnaprashana">Swarnaprashana</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Healing Talks</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="book-appointment.html" class="btn btn-primary nav-cta" aria-label="Book an Appointment">Book Appointment</a>
+
+      <!-- Mobile Nav Toggle Button -->
+      <button class="mobile-nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Fullscreen Overlay -->
+  <div id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-drawer">
+      <ul class="mobile-menu-list">
+        <li class="mobile-menu-item"><a href="index.html" class="mobile-menu-link">Home</a></li>
+        
+        <li class="mobile-menu-item mobile-menu-item-dropdown">
+          <a href="about.html" class="mobile-menu-link">About <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+          <ul class="mobile-submenu">
+            <li><a href="about.html#story">Our Story</a></li>
+            <li><a href="about.html#philosophy">Healing Philosophy</a></li>
+            <li><a href="about.html#ayurveda">About Ayurveda</a></li>
+            <li><a href="about.html#doctors">Our Doctors</a></li>
+            <li><a href="about.html#facilities">Facilities</a></li>
+          </ul>
+        </li>
+
+        <li class="mobile-menu-item mobile-menu-item-dropdown">
+          <a href="treatments.html" class="mobile-menu-link">Treatments <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+          <ul class="mobile-submenu">
+            <li><a href="treatments.html#panchakarma">Panchakarma</a></li>
+            <li><a href="treatments.html#detox">Detox Therapy</a></li>
+            <li><a href="treatments.html#pain">Pain Management</a></li>
+            <li><a href="treatments.html#stress">Stress Relief</a></li>
+            <li><a href="treatments.html#weight">Weight Management</a></li>
+            <li><a href="treatments.html#skin">Skin & Hair Care</a></li>
+            <li><a href="treatments.html#rejuvenation">Rejuvenation Therapy</a></li>
+            <li><a href="treatments.html#immunity">Immunity Boosting</a></li>
+          </ul>
+        </li>
+
+        <li class="mobile-menu-item mobile-menu-item-dropdown">
+          <a href="departments.html" class="mobile-menu-link">Departments <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+          <ul class="mobile-submenu">
+            <li><a href="departments.html#ortho">Orthopaedic Care</a></li>
+            <li><a href="departments.html#neuro">Neurology</a></li>
+            <li><a href="departments.html#ent">ENT & Eye Care</a></li>
+            <li><a href="departments.html#mental">Mental Wellness</a></li>
+            <li><a href="departments.html#women">Women's Wellness</a></li>
+            <li><a href="departments.html#medicine">Internal Medicine</a></li>
+            <li><a href="departments.html#pediatrics">Pediatrics</a></li>
+            <li><a href="departments.html#yoga">Yoga & Naturopathy</a></li>
+          </ul>
+        </li>
+
+        <li class="mobile-menu-item mobile-menu-item-dropdown">
+          <a href="packages.html" class="mobile-menu-link">Packages <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+          <ul class="mobile-submenu">
+            <li><a href="packages.html#relaxation">Relaxation</a></li>
+            <li><a href="packages.html#detox-prog">Detox Program</a></li>
+            <li><a href="packages.html#rejuvenation-prog">Rejuvenation</a></li>
+            <li><a href="packages.html#beauty">Beauty Care</a></li>
+            <li><a href="packages.html#senior">Senior Wellness</a></li>
+            <li><a href="packages.html#stress-prog">Stress Management</a></li>
+            <li><a href="packages.html#swarnaprashana">Swarnaprashana</a></li>
+          </ul>
+        </li>
+
+        <li class="mobile-menu-item"><a href="gallery.html" class="mobile-menu-link">Gallery</a></li>
+        <li class="mobile-menu-item"><a href="blog.html" class="mobile-menu-link">Healing Talks</a></li>
+        <li class="mobile-menu-item"><a href="contact.html" class="mobile-menu-link">Contact</a></li>
+      </ul>
+      <a href="book-appointment.html" class="btn btn-primary mobile-menu-cta" aria-label="Book an Appointment">Book Appointment</a>
+    </div>
+  </div>
+
+  <!-- Standard Inner Page Hero -->
+  <section class="page-hero" aria-label="Page Header">
+    <div class="container">
+      <div class="page-hero-content reveal">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> <span>&rarr;</span> <span>Packages</span>
+        </div>
+        <h1 class="page-title font-serif">Wellness Packages</h1>
+        <p class="page-subtitle">Fully residential, physician-monitored retreat packages designed to cleanse, restore, and rejuvenate.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN SCROLL CONTENT -->
+  <main id="main-content">
+
+    <!-- SECTION 1: PACKAGES GRID -->
+    <section aria-label="Our Wellness Packages">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Tailored Wellness Journeys</span>
+          <h2 class="section-title">Physician-Guided Cure Programs</h2>
+          <p class="section-desc">Unlike generic hotel spa treatments, AyurQ packages are structured medical regimes. Following deep consultation, our clinical team prescribes specific oil decoctions and dietary courses to match your unique Dosha composition.</p>
+        </div>
+
+        <div class="packages-grid reveal-stagger">
+
+          <!-- Package 1: Relaxation -->
+          <div id="relaxation" class="reveal-item">
+            <div class="package-card">
+              <div class="package-visual">
+                <span class="package-badge">Popular</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="relaxation-package.png" alt="Relaxation Package" class="visual-image">
+                  <div class="visual-fallback gradient-oil">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M17 8C8 10 9 21 9 21s11-1 13-9c1-4-2-4-5-4z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="package-content">
+                <h4>Niramaya Relaxation</h4>
+                <span class="package-sanskrit">Sukh Chikitsa</span>
+                <p class="package-desc">
+                  Designed specifically to soothe busy sensory networks, calm cerebral fatigue, and clear general physical stiffness. Excellent for professionals escaping severe corporate fatigue.
+                </p>
+                <ul class="package-meta-list">
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Full-body Abhyanga & Shirodhara</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Organic herbal steam baths</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Calming Chamomile tea regime</li>
+                </ul>
+                <div class="package-price-line">
+                  <span class="package-duration-tag">7 / 14 Days</span>
+                  <span class="package-price-tag">&#8377; 15,500 <small style="font-size:0.65rem; font-weight:500;">/wk</small></span>
+                </div>
+                <a href="book-appointment.html?package=relaxation" class="btn btn-outline-green">Enquire Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package 2: Detox -->
+          <div id="detox-prog" class="reveal-item">
+            <div class="package-card">
+              <div class="package-visual">
+                <span class="package-badge">Clinical</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="detox-package.jpg.png" alt="Detox Program" class="visual-image">
+                  <div class="visual-fallback gradient-herb">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="package-content">
+                <h4>Shodhana Detox</h4>
+                <span class="package-sanskrit">Panchakarma Chikitsa</span>
+                <p class="package-desc">
+                  An intense cellular cleanse mobilizing and ejecting stored environmental and metabolic wastes (Ama). Recommended for comprehensive digestive and metabolic renewal.
+                </p>
+                <ul class="package-meta-list">
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Classical Snehapana (ghee drinking)</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> virechana (controlled purgation)</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Customized post-toxin Pathya diet</li>
+                </ul>
+                <div class="package-price-line">
+                  <span class="package-duration-tag">14 / 21 Days</span>
+                  <span class="package-price-tag">&#8377; 28,000 <small style="font-size:0.65rem; font-weight:500;">/wk</small></span>
+                </div>
+                <a href="book-appointment.html?package=detox" class="btn btn-outline-green">Enquire Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package 3: Rejuvenation -->
+          <div id="rejuvenation-prog" class="reveal-item">
+            <div class="package-card">
+              <div class="package-visual">
+                <span class="package-badge">Premium</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="rejuvenation.jpg.png" alt="Rejuvenation Program" class="visual-image">
+                  <div class="visual-fallback gradient-atmosphere">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="package-content">
+                <h4>Rasayana Rejuvenation</h4>
+                <span class="package-sanskrit">Kaya Kalpa Chikitsa</span>
+                <p class="package-desc">
+                  Focused on anti-aging cell vitality, biological age reversal, tissue longevity, and deep-layer tissue (Dhatu) cellular replenishment. Returns original structural vitality.
+                </p>
+                <ul class="package-meta-list">
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Medicated milk streams (Pizhichil)</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Traditional Njavara rice bundle massage</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Longevity-boosting Rasayana herbs</li>
+                </ul>
+                <div class="package-price-line">
+                  <span class="package-duration-tag">7 / 14 / 21 Days</span>
+                  <span class="package-price-tag">&#8377; 22,000 <small style="font-size:0.65rem; font-weight:500;">/wk</small></span>
+                </div>
+                <a href="book-appointment.html?package=rejuvenation" class="btn btn-outline-green">Enquire Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package 4: Beauty Care -->
+          <div id="beauty" class="reveal-item">
+            <div class="package-card">
+              <div class="package-visual">
+                <span class="package-badge">Aesthetic</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="beauty-package.png" alt="Beauty Care" class="visual-image">
+                  <div class="visual-fallback gradient-spice">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="package-content">
+                <h4>Soundarya Beauty Care</h4>
+                <span class="package-sanskrit">Kanti Vardhaka Chikitsa</span>
+                <p class="package-desc">
+                  Nurturing therapies focusing on skin luster, scalp tissue health, hair growth stimulation, and absolute outer radiance using organic fruit and herbal pulps.
+                </p>
+                <ul class="package-meta-list">
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Saffron (Kumkumadi) facial pools</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Udvartana deep skin herbal scrubs</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Scalp-stimulating keshya packs</li>
+                </ul>
+                <div class="package-price-line">
+                  <span class="package-duration-tag">7 / 14 Days</span>
+                  <span class="package-price-tag">&#8377; 16,500 <small style="font-size:0.65rem; font-weight:500;">/wk</small></span>
+                </div>
+                <a href="book-appointment.html?package=beauty" class="btn btn-outline-green">Enquire Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package 5: Senior Wellness -->
+          <div id="senior" class="reveal-item">
+            <div class="package-card">
+              <div class="package-visual">
+                <span class="package-badge">Geriatric</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="senior-wellness.jpg.png" alt="Senior Wellness" class="visual-image">
+                  <div class="visual-fallback gradient-herb">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="package-content">
+                <h4>Vayoshield Senior Care</h4>
+                <span class="package-sanskrit">Jara Chikitsa</span>
+                <p class="package-desc">
+                  Focused geriatric care to combat natural degenerative processes in bone and joint tissues, support memory health, and strengthen natural cellular immunity.
+                </p>
+                <ul class="package-meta-list">
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Warm joint pools (Janu & Kati Basti)</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Mild colon enemas (Basti)</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Bone strength supplements</li>
+                </ul>
+                <div class="package-price-line">
+                  <span class="package-duration-tag">14 Days</span>
+                  <span class="package-price-tag">&#8377; 19,000 <small style="font-size:0.65rem; font-weight:500;">/wk</small></span>
+                </div>
+                <a href="book-appointment.html?package=senior" class="btn btn-outline-green">Enquire Now</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Package 6: Stress Management -->
+          <div id="stress-prog" class="reveal-item">
+            <div class="package-card">
+              <div class="package-visual">
+                <span class="package-badge">Mindfulness</span>
+                <div class="visual-container" style="height:100%">
+                  <img src="stress-relief.jpg.png" alt="Stress Relief" class="visual-image">
+                  <div class="visual-fallback gradient-atmosphere">
+                    <svg class="organic-leaf-watermark" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93z"/></svg>
+                  </div>
+                </div>
+              </div>
+              <div class="package-content">
+                <h4>Manokanti Stress Care</h4>
+                <span class="package-sanskrit">Manas Shanti Chikitsa</span>
+                <p class="package-desc">
+                  Targets deep mental fatigue, severe insomnia, panic attacks, and clinical anxiety syndromes. Re-aligns emotional peace and cognitive alertness.
+                </p>
+                <ul class="package-meta-list">
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Medicated buttermilk streams (Takradhara)</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Deep calming oil massages (Abhyanga)</li>
+                  <li class="package-meta-item"><svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Personalized meditation & nidra</li>
+                </ul>
+                <div class="package-price-line">
+                  <span class="package-duration-tag">7 / 14 Days</span>
+                  <span class="package-price-tag">&#8377; 18,500 <small style="font-size:0.65rem; font-weight:500;">/wk</small></span>
+                </div>
+                <a href="book-appointment.html?package=stress" class="btn btn-outline-green">Enquire Now</a>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: SWARNAPRASHANA PEDIATRIC HEALTH -->
+    <section id="swarnaprashana" class="swarna-section" aria-label="Swarnaprashana Pediatric Immunization">
+      <div class="container">
+        <div class="swarna-split">
+          <div class="swarna-left reveal">
+            <span class="section-label" style="color: var(--gold);">Pediatric Immunization Ritual</span>
+            <h3>Swarnaprashana for Children</h3>
+            <p>
+              **Swarnaprashana** (literally "Gold Eating") is one of the 16 essential classical Vedic rituals (Sanskara) designated for babies and children aged 6 months to 16 years.
+            </p>
+            <p>
+              It involves administering extremely pure, micro-processed liquid gold particles (Swarna Bhasma) mixed dynamically with organic forest honey, traditionally clarified medicinal cow ghee, and potent brain-stimulating herbal juices (like Shankhapushpi, Brahmi, and Vacha) under medical supervision.
+            </p>
+            <p>
+              At AyurQ Vizag, we host a designated pediatric room where children receive their Swarnaprashana drops on standard **Pushya Nakshatra days** (which occur once every 27 days, representing maximum cellular absorption capacity).
+            </p>
+            <ul class="swarna-features">
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span><strong>Immunity Shield:</strong> Prevents chronic respiratory colds, chest congestions, and seasonal fevers naturally.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span><strong>Cognitive Surge:</strong> Amplifies memory recall, local concentration, speech articulation, and overall IQ metrics.</span>
+              </li>
+              <li>
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span><strong>Digestive Health:</strong> Ignites weak pediatric appetite and eliminates gut toxins and worms naturally.</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="swarna-right reveal">
+            <div class="swarna-right-card">
+              <h4>Swarnaprashana</h4>
+              <span class="swarna-sub">Kaumarbhritya Immunization</span>
+              <p>
+                Secure your child's physical and mental health markers using completely genuine, non-toxic gold formulations prepared under strict clinical hospital standards.
+              </p>
+              <div class="pushya-box">
+                Next Session: Pushya Nakshatra Day<br>Contact Center to Book Slots
+              </div>
+              <ul class="package-meta-list" style="border-top: 1px solid rgba(255,255,255,0.08); border-bottom: 1px solid rgba(255,255,255,0.08); margin-bottom: 30px;">
+                <li class="package-meta-item" style="color: var(--cream);"><svg viewBox="0 0 24 24" style="fill: var(--gold);"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> 100% Certified Swarna Bhasma</li>
+                <li class="package-meta-item" style="color: var(--cream);"><svg viewBox="0 0 24 24" style="fill: var(--gold);"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Medhya Rasayana botanical juices</li>
+                <li class="package-meta-item" style="color: var(--cream);"><svg viewBox="0 0 24 24" style="fill: var(--gold);"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg> Complete pediatric dosage charts</li>
+              </ul>
+              <a href="book-appointment.html?package=swarnaprashana" class="btn btn-primary" style="width: 100%;">Enquire For Child</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: FAQ ACCORDION -->
+    <section aria-label="Frequently Asked Questions">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">General FAQ</span>
+          <h2 class="section-title">Packages Questions</h2>
+          <p class="section-desc">Got questions about booking and undergoing a wellness package? Review our detailed medical FAQ guidelines below.</p>
+        </div>
+
+        <div class="faq-accordion reveal">
+          
+          <!-- FAQ 1 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span class="faq-title">How do I determine which package is right for me?</span>
+              <span class="faq-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+              </span>
+            </button>
+            <div class="faq-content-wrapper">
+              <div class="faq-content">
+                <div class="faq-content-inner">
+                  Every package begins with an in-depth clinical consultation with our certified BAMS doctors. They will read your pulse (Nadi Pariksha) and assess your physical constitution (Prakriti vs. Vikriti). Based on this, they will advise whether you need a deep metabolic purge (Detox) or gentle sensory soothing (Relaxation).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 2 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span class="faq-title">Are package durations flexible, or do they have to be exact?</span>
+              <span class="faq-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+              </span>
+            </button>
+            <div class="faq-content-wrapper">
+              <div class="faq-content">
+                <div class="faq-content-inner">
+                  Ayurvedic therapies require specific durations to mobilize toxins from your tissues (Dhatus) and successfully eject them from the body. While 7-day programs serve as excellent maintenance, deep clinical corrections (like Panchakarma or Spine Care) strictly mandate 14-day or 21-day cycles to guarantee permanent symptom release.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 3 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span class="faq-title">Do I need to follow a strict dietary regime during the package?</span>
+              <span class="faq-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+              </span>
+            </button>
+            <div class="faq-content-wrapper">
+              <div class="faq-content">
+                <div class="faq-content-inner">
+                  Yes. Food is considered primary medicine in Ayurveda. During your package, our doctors prescribe a specialized vegetarian diet (Pathya) that supports your digestive fire (Agni). Following this dietary course is absolutely vital to ensure the therapies have the desired physiological effect.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 4 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span class="faq-title">Can I customize the specific therapies included in the packages?</span>
+              <span class="faq-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+              </span>
+            </button>
+            <div class="faq-content-wrapper">
+              <div class="faq-content">
+                <div class="faq-content-inner">
+                  Absolutely. No two bodies are alike in Ayurveda. The listed therapies serve as general guidelines; our doctors will dynamically swap specific oils, herbal bundles, and localized treatments based on your daily metabolic responses during the package.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 5 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span class="faq-title">Is residential lodging/accommodation provided at your Vizag retreat?</span>
+              <span class="faq-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+              </span>
+            </button>
+            <div class="faq-content-wrapper">
+              <div class="faq-content">
+                <div class="faq-content-inner">
+                  We offer premium, highly comfortable air-conditioned therapy chambers and private recovery suites where you can rest post-treatment. For outstation patients seeking full boarding, our clinical desk will facilitate luxurious local residential accommodations adjacent to our Seethammadara retreat center.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- FAQ 6 -->
+          <div class="faq-item">
+            <button class="faq-trigger" aria-expanded="false">
+              <span class="faq-title">Do you accept medical insurance or clinical reimbursement?</span>
+              <span class="faq-icon-wrapper">
+                <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg>
+              </span>
+            </button>
+            <div class="faq-content-wrapper">
+              <div class="faq-content">
+                <div class="faq-content-inner">
+                  AyurQ is a certified clinical Ayurveda center. We provide formal clinical doctor consultation sheets, tax invoices, and detailed treatment breakdown certificates. These can be successfully submitted to major private insurers for Ayurvedic clinical reimbursement depending on your policy guidelines.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 4: CINEMATIC CTA BANNER -->
+    <section class="cta-banner-section" aria-label="Call to Action">
+      <div class="container">
+        <div class="cta-banner-content">
+          <h2 class="cormorant">Ready to Begin Your Healing Retreat?</h2>
+          <p>Book a slot online or connect with our clinical consultation desk directly to configure your personalized wellness package.</p>
+          <div class="cta-banner-btns">
+            <a href="book-appointment.html" class="btn btn-primary">Book Package</a>
+            <a href="contact.html" class="btn btn-secondary">Talk to Experts</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Unified Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col reveal">
+          <a href="index.html" class="brand-logo footer-logo" aria-label="AyurQ Logo">
+            <img src="Logo.png" alt="AyurQ Logo" class="brand-logo-img">
+          </a>
+          <p class="footer-col-desc">
+            An award-winning clinical Ayurveda retreat sanctuary specializing in authentic treatments, personalized wellness programs, and holistic Panchakarma therapies. Rejuvenate naturally under clinical expertise.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 0 1-2.825.775 4.958 4.958 0 0 0 2.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 0 0-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 0 0-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.06a4.923 4.923 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.212.085 4.936 4.936 0 0 0 4.604 3.417 9.867 9.867 0 0 1-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 0 0 7.557 2.209c9.053 0 13.998-7.496 13.998-13.986 0-.21 0-.42-.015-.63A9.935 9.935 0 0 0 24 4.59z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="treatments.html">Treatments</a></li>
+            <li><a href="departments.html">Departments</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Healing Talks</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Treatments</h4>
+          <ul class="footer-links">
+            <li><a href="treatments.html#panchakarma">Panchakarma</a></li>
+            <li><a href="treatments.html#detox">Detox Therapy</a></li>
+            <li><a href="treatments.html#pain">Pain Relief</a></li>
+            <li><a href="treatments.html#stress">Stress Management</a></li>
+            <li><a href="treatments.html#skin">Skin & Hair Care</a></li>
+            <li><a href="treatments.html#rejuvenation">Rejuvenation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Contact & Location</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              <span>49-58-9/A, Green Park Colony, Seethammadara, Visakhapatnam, AP 530013</span>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.27 11.4 11.4 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.58 1 1 0 0 1-.27 1.02l-2.2 2.2z"/></svg>
+              <a href="tel:8093526669">8093526669</a>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <a href="mailto:ayurqvizag@gmail.com">ayurqvizag@gmail.com</a>
+            </div>
+          </div>
+          <form class="newsletter-form">
+            <p>Get Healing Insights in Your Inbox</p>
+            <div class="input-group">
+              <input type="email" placeholder="Your Email Address" aria-label="Email for Newsletter" required>
+              <button type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 AyurQ Ayurveda. All rights reserved.</p>
+        <p>Made with &hearts; in Visakhapatnam | Quality Driven Ayurveda</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/918093526669" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12.012 2C6.48 2 2 6.48 2 12.012c0 1.767.46 3.48 1.332 4.992L2 22l5.124-1.344c1.464.792 3.108 1.212 4.884 1.212 5.532 0 10.012-4.48 10.012-10.012C22.02 6.48 17.54 2 12.012 2zm6.18 13.908c-.24.672-1.224 1.236-1.74 1.308-.48.06-1.092.084-2.736-.588-2.1-1.02-3.444-3.144-3.552-3.288-.096-.144-.804-1.068-.804-2.028 0-.96.504-1.428.684-1.62.18-.192.396-.24.528-.24h.372c.12 0 .288-.048.444.324.168.408.576 1.404.624 1.5.048.096.084.216.012.36-.072.144-.108.24-.216.372-.108.12-.228.276-.324.372-.108.108-.228.228-.096.456.132.228.588.972 1.26 1.572.864.768 1.596 1.008 1.824 1.116.228.108.36.096.492-.06.132-.156.576-.672.732-.9.156-.228.312-.192.528-.108.216.084 1.368.648 1.608.768.24.12.396.18.456.288.06.108.06.636-.18 1.308z"/></svg>
+  </a>
+
+  <!-- CDN scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.36/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

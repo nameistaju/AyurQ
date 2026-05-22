@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Appointment | AyurQ — Premium Clinical Ayurveda Vizag</title>
+  <meta name="description" content="Book an appointment online at AyurQ, Visakhapatnam. Schedule a clinical consultation, Panchakarma therapy session, or customized wellness program.">
+  <meta name="keywords" content="Ayurveda appointment Vizag, book Panchakarma Visakhapatnam, online Ayurvedic doctor consult, clinical wellness Visakhapatnam">
+  
+  <!-- Swiper CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  
+  <!-- Shared Style -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!-- Appointment Custom Specific Styles -->
+  <style>
+    /* Scoped Luxury Wellness Override Styles */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap');
+
+    .appointment-container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1.5px solid rgba(239, 230, 213, 0.4);
+      border-radius: 32px;
+      padding: 60px;
+      box-shadow: 0 30px 60px rgba(30, 58, 43, 0.08), 
+                  inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      position: relative;
+      margin-bottom: 80px;
+      z-index: 10;
+    }
+    
+    .appointment-container h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.8rem;
+      font-weight: 500;
+      color: #1E3A2B;
+      margin-bottom: 12px;
+      text-align: center;
+      letter-spacing: -0.5px;
+    }
+    
+    .appointment-container .form-intro {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.05rem;
+      color: var(--text-muted);
+      margin-bottom: 45px;
+      text-align: center;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      line-height: 1.6;
+    }
+    
+    /* Form fields and Floating Labels */
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+    }
+    
+    .floating-group {
+      position: relative;
+      margin-bottom: 5px;
+    }
+    
+    .floating-group.full-width {
+      grid-column: span 2;
+    }
+    
+    .floating-input {
+      width: 100%;
+      padding: 22px 20px 10px 20px;
+      border-radius: 16px;
+      border: 1.5px solid rgba(30, 58, 43, 0.12);
+      background-color: rgba(248, 244, 234, 0.55);
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: #222222;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+      appearance: none;
+      -webkit-appearance: none;
+    }
+    
+    /* Native select styling overrides */
+    select.floating-input {
+      background-image: url("data:image/svg+xml;utf8,<svg fill='%232E6B3E' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      padding-right: 45px;
+      cursor: pointer;
+    }
+    
+    /* Native date styling overrides */
+    input[type="date"].floating-input {
+      cursor: pointer;
+    }
+    
+    .floating-input:focus {
+      outline: none;
+      border-color: #2E6B3E;
+      background-color: #FFFFFF;
+      box-shadow: 0 10px 25px rgba(46, 107, 62, 0.08), 
+                  0 0 0 4px rgba(46, 107, 62, 0.06);
+    }
+    
+    textarea.floating-input {
+      min-height: 140px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+    
+    /* Floating Labels styling */
+    .floating-label {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: rgba(30, 58, 43, 0.6);
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    textarea.floating-input ~ .floating-label {
+      top: 30px;
+    }
+    
+    /* Animate label to float above input */
+    .floating-input:focus ~ .floating-label,
+    .floating-input:not(:placeholder-shown) ~ .floating-label,
+    .floating-input.has-value ~ .floating-label {
+      top: 14px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #2E6B3E;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+    
+    .floating-input:focus ~ .floating-label {
+      color: #F28C28; /* Highlight accent on focus */
+    }
+
+    /* Error Validation State Styling */
+    .floating-group.error .floating-input {
+      border-color: #d9534f;
+      background-color: rgba(217, 83, 79, 0.02);
+      box-shadow: 0 0 0 4px rgba(217, 83, 79, 0.1);
+    }
+    
+    .floating-group.error .floating-label {
+      color: #d9534f !important;
+    }
+    
+    .error-msg {
+      color: #d9534f;
+      font-size: 0.75rem;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
+      margin-top: 6px;
+      margin-left: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      opacity: 0;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+    
+    .floating-group.error .error-msg {
+      opacity: 1;
+      max-height: 20px;
+    }
+    
+    /* Interactive Luxury Submit Button */
+    .submit-btn {
+      width: 100%;
+      padding: 18px 36px;
+      border-radius: 50px;
+      background: linear-gradient(135deg, #F28C28 0%, #E07B18 100%);
+      color: #FFFFFF;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 10px 25px rgba(242, 140, 40, 0.25);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    .submit-btn:hover {
+      background: linear-gradient(135deg, #2E6B3E 0%, #1E3A2B 100%);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 30px rgba(46, 107, 62, 0.3);
+    }
+    
+    .submit-btn:active {
+      transform: translateY(-1px);
+    }
+    
+    .submit-btn .btn-text {
+      transition: all 0.3s ease;
+      display: inline-block;
+    }
+    
+    .submit-btn .btn-loader {
+      position: absolute;
+      width: 24px;
+      height: 24px;
+      opacity: 0;
+      transform: scale(0.5);
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+    
+    /* Loading Form State triggers */
+    .submit-btn.loading {
+      pointer-events: none;
+      background: #1E3A2B;
+      box-shadow: none;
+    }
+    
+    .submit-btn.loading .btn-text {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    
+    .submit-btn.loading .btn-loader {
+      opacity: 1;
+      transform: scale(1);
+    }
+    
+    /* Spin animation for button loader */
+    .spinner {
+      animation: rotate-spinner 2s linear infinite;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .spinner .path {
+      stroke: #FFFFFF;
+      stroke-linecap: round;
+      animation: dash-spinner 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes rotate-spinner {
+      100% { transform: rotate(360deg); }
+    }
+    
+    @keyframes dash-spinner {
+      0% {
+        stroke-dasharray: 1, 150;
+        stroke-dashoffset: 0;
+      }
+      50% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -35;
+      }
+      100% {
+        stroke-dasharray: 90, 150;
+        stroke-dashoffset: -124;
+      }
+    }
+    
+    /* Premium Success and Error Toast Notifications Container */
+    .toast-container {
+      position: fixed;
+      top: 30px;
+      right: 30px;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      pointer-events: none;
+    }
+    
+    .toast-notification {
+      width: 380px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-radius: 20px;
+      padding: 18px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      box-shadow: 0 20px 45px rgba(15, 32, 24, 0.12), 
+                  inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      pointer-events: auto;
+      transform-origin: top right;
+      border-left: 5px solid #2E6B3E; /* Success Accent default */
+      transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    }
+    
+    .toast-notification.toast-success {
+      border-left-color: #2E6B3E;
+    }
+    
+    .toast-notification.toast-error {
+      border-left-color: #d9534f;
+    }
+    
+    .toast-icon {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .toast-success .toast-icon {
+      background-color: rgba(46, 107, 62, 0.12);
+      color: #2E6B3E;
+    }
+    
+    .toast-error .toast-icon {
+      background-color: rgba(217, 83, 79, 0.12);
+      color: #d9534f;
+    }
+    
+    .toast-icon svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    
+    .toast-content {
+      flex-grow: 1;
+    }
+    
+    .toast-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: #1E3A2B;
+      margin-bottom: 4px;
+    }
+    
+    .toast-message {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #555555;
+      line-height: 1.4;
+    }
+    
+    .toast-close {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: rgba(30, 58, 43, 0.4);
+      padding: 0;
+      margin-top: 2px;
+      transition: color 0.2s ease;
+    }
+    
+    .toast-close:hover {
+      color: #d9534f;
+    }
+    
+    .toast-close svg {
+      width: 14px;
+      height: 14px;
+      fill: currentColor;
+    }
+    
+    /* Timeline flow tracking */
+    .timeline-section {
+      background-color: var(--beige);
+      padding: 80px 0;
+    }
+    
+    .flow-timeline {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      position: relative;
+      margin-top: 40px;
+    }
+    
+    .flow-timeline::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      left: 15%;
+      width: 70%;
+      height: 2px;
+      background: linear-gradient(to right, var(--green) 50%, rgba(30, 58, 43, 0.1) 50%);
+      background-size: 15px 2px;
+      background-repeat: repeat-x;
+      z-index: 1;
+    }
+    
+    .flow-step {
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .flow-node {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background-color: var(--white);
+      border: 2px solid var(--green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--green);
+      font-family: var(--font-body);
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px var(--shadow-light);
+      transition: var(--transition-smooth);
+    }
+    
+    .flow-step:hover .flow-node {
+      background-color: var(--green);
+      color: var(--white);
+      transform: scale(1.1);
+      box-shadow: 0 8px 20px rgba(46, 107, 62, 0.2);
+    }
+    
+    .flow-step h4 {
+      font-size: 1.35rem;
+      color: var(--green-dark);
+      margin-bottom: 8px;
+    }
+    
+    .flow-step p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 250px;
+      line-height: 1.5;
+    }
+    
+    /* Contact Quick Strip */
+    .quick-strip {
+      background-color: var(--green-deep);
+      color: var(--cream);
+      padding: 40px 0;
+      text-align: center;
+      border-top: 1px solid rgba(201, 168, 76, 0.2);
+    }
+    
+    .quick-strip-flex {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .quick-strip-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.15rem;
+    }
+    
+    .quick-strip-item svg {
+      width: 24px;
+      height: 24px;
+      fill: var(--gold);
+    }
+    
+    .quick-strip-item a {
+      color: var(--white);
+      font-weight: 500;
+    }
+    
+    .quick-strip-item a:hover {
+      color: var(--orange);
+    }
+    
+    @media (max-width: 768px) {
+      .appointment-container {
+        padding: 40px 25px;
+      }
+      .form-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      .floating-group.full-width {
+        grid-column: span 1;
+      }
+      .flow-timeline {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+      .flow-timeline::before {
+        display: none;
+      }
+      .quick-strip-flex {
+        flex-direction: column;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Loading Screen -->
+  <div id="loading-screen" aria-hidden="true">
+    <div class="loader-content">
+      <svg class="loader-mandala" viewBox="0 0 100 100">
+        <path d="M50 15 C55 25, 45 25, 50 15 Z M50 85 C55 75, 45 75, 50 85 Z M15 50 C25 55, 25 45, 15 50 Z M85 50 C75 55, 75 45, 85 50 Z" />
+        <path d="M50 5 C52 20, 48 20, 50 5 Z M50 95 C52 80, 48 80, 50 95 Z M5 50 C20 52, 20 48, 5 50 Z M95 50 C80 52, 80 48, 95 50 Z" />
+        <circle cx="50" cy="50" r="10" fill="none" stroke="var(--gold)" stroke-width="1" />
+      </svg>
+      <img src="Logo.png" alt="AyurQ Logo" class="loader-logo-img">
+      <div class="loader-tagline">Quality Driven Ayurveda</div>
+    </div>
+  </div>
+
+  <!-- Sticky Header -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="index.html" class="brand-logo" aria-label="AyurQ Homepage">
+        <img src="Logo.png" alt="AyurQ Logo" class="brand-logo-img">
+      </a>
+
+      <!-- Desktop Navigation Menu -->
+      <nav class="desktop-nav" aria-label="Main Navigation">
+        <ul class="nav-list">
+          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+          
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="about.html" class="nav-link">About</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="about.html#story">Our Story</a></li>
+              <li class="dropdown-item"><a href="about.html#philosophy">Healing Philosophy</a></li>
+              <li class="dropdown-item"><a href="about.html#ayurveda">About Ayurveda</a></li>
+              <li class="dropdown-item"><a href="about.html#doctors">Our Doctors</a></li>
+              <li class="dropdown-item"><a href="about.html#facilities">Facilities</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="treatments.html" class="nav-link">Treatments</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="treatments.html#panchakarma">Panchakarma</a></li>
+              <li class="dropdown-item"><a href="treatments.html#detox">Detox Therapy</a></li>
+              <li class="dropdown-item"><a href="treatments.html#pain">Pain Management</a></li>
+              <li class="dropdown-item"><a href="treatments.html#stress">Stress Relief</a></li>
+              <li class="dropdown-item"><a href="treatments.html#weight">Weight Management</a></li>
+              <li class="dropdown-item"><a href="treatments.html#skin">Skin & Hair Care</a></li>
+              <li class="dropdown-item"><a href="treatments.html#rejuvenation">Rejuvenation Therapy</a></li>
+              <li class="dropdown-item"><a href="treatments.html#immunity">Immunity Boosting</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="departments.html" class="nav-link">Departments</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="departments.html#ortho">Orthopaedic Care</a></li>
+              <li class="dropdown-item"><a href="departments.html#neuro">Neurology</a></li>
+              <li class="dropdown-item"><a href="departments.html#ent">ENT & Eye Care</a></li>
+              <li class="dropdown-item"><a href="departments.html#mental">Mental Wellness</a></li>
+              <li class="dropdown-item"><a href="departments.html#women">Women's Wellness</a></li>
+              <li class="dropdown-item"><a href="departments.html#medicine">Internal Medicine</a></li>
+              <li class="dropdown-item"><a href="departments.html#pediatrics">Pediatrics</a></li>
+              <li class="dropdown-item"><a href="departments.html#yoga">Yoga & Naturopathy</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item nav-item-has-dropdown">
+            <a href="packages.html" class="nav-link">Packages</a>
+            <ul class="dropdown-menu">
+              <li class="dropdown-item"><a href="packages.html#relaxation">Relaxation</a></li>
+              <li class="dropdown-item"><a href="packages.html#detox-prog">Detox Program</a></li>
+              <li class="dropdown-item"><a href="packages.html#rejuvenation-prog">Rejuvenation</a></li>
+              <li class="dropdown-item"><a href="packages.html#beauty">Beauty Care</a></li>
+              <li class="dropdown-item"><a href="packages.html#senior">Senior Wellness</a></li>
+              <li class="dropdown-item"><a href="packages.html#stress-prog">Stress Management</a></li>
+              <li class="dropdown-item"><a href="packages.html#swarnaprashana">Swarnaprashana</a></li>
+            </ul>
+          </li>
+
+          <li class="nav-item"><a href="gallery.html" class="nav-link">Gallery</a></li>
+          <li class="nav-item"><a href="blog.html" class="nav-link">Healing Talks</a></li>
+          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <a href="book-appointment.html" class="btn btn-primary nav-cta" aria-label="Book an Appointment">Book Appointment</a>
+
+      <!-- Mobile Nav Toggle Button -->
+      <button class="mobile-nav-toggle" aria-label="Toggle Menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Fullscreen Overlay -->
+  <div id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-drawer">
+    <ul class="mobile-menu-list">
+      <li class="mobile-menu-item"><a href="index.html" class="mobile-menu-link">Home</a></li>
+      
+      <li class="mobile-menu-item mobile-menu-item-dropdown">
+        <a href="about.html" class="mobile-menu-link">About <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+        <ul class="mobile-submenu">
+          <li><a href="about.html#story">Our Story</a></li>
+          <li><a href="about.html#philosophy">Healing Philosophy</a></li>
+          <li><a href="about.html#ayurveda">About Ayurveda</a></li>
+          <li><a href="about.html#doctors">Our Doctors</a></li>
+          <li><a href="about.html#facilities">Facilities</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-menu-item mobile-menu-item-dropdown">
+        <a href="treatments.html" class="mobile-menu-link">Treatments <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+        <ul class="mobile-submenu">
+          <li><a href="treatments.html#panchakarma">Panchakarma</a></li>
+          <li><a href="treatments.html#detox">Detox Therapy</a></li>
+          <li><a href="treatments.html#pain">Pain Management</a></li>
+          <li><a href="treatments.html#stress">Stress Relief</a></li>
+          <li><a href="treatments.html#weight">Weight Management</a></li>
+          <li><a href="treatments.html#skin">Skin & Hair Care</a></li>
+          <li><a href="treatments.html#rejuvenation">Rejuvenation Therapy</a></li>
+          <li><a href="treatments.html#immunity">Immunity Boosting</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-menu-item mobile-menu-item-dropdown">
+        <a href="departments.html" class="mobile-menu-link">Departments <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+        <ul class="mobile-submenu">
+          <li><a href="departments.html#ortho">Orthopaedic Care</a></li>
+          <li><a href="departments.html#neuro">Neurology</a></li>
+          <li><a href="departments.html#ent">ENT & Eye Care</a></li>
+          <li><a href="departments.html#mental">Mental Wellness</a></li>
+          <li><a href="departments.html#women">Women's Wellness</a></li>
+          <li><a href="departments.html#medicine">Internal Medicine</a></li>
+          <li><a href="departments.html#pediatrics">Pediatrics</a></li>
+          <li><a href="departments.html#yoga">Yoga & Naturopathy</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-menu-item mobile-menu-item-dropdown">
+        <a href="packages.html" class="mobile-menu-link">Packages <svg viewBox="0 0 24 24"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"/></svg></a>
+        <ul class="mobile-submenu">
+          <li><a href="packages.html#relaxation">Relaxation</a></li>
+          <li><a href="packages.html#detox-prog">Detox Program</a></li>
+          <li><a href="packages.html#rejuvenation-prog">Rejuvenation</a></li>
+          <li><a href="packages.html#beauty">Beauty Care</a></li>
+          <li><a href="packages.html#senior">Senior Wellness</a></li>
+          <li><a href="packages.html#stress-prog">Stress Management</a></li>
+          <li><a href="packages.html#swarnaprashana">Swarnaprashana</a></li>
+        </ul>
+      </li>
+
+      <li class="mobile-menu-item"><a href="gallery.html" class="mobile-menu-link">Gallery</a></li>
+      <li class="mobile-menu-item"><a href="blog.html" class="mobile-menu-link">Healing Talks</a></li>
+      <li class="mobile-menu-item"><a href="contact.html" class="mobile-menu-link">Contact</a></li>
+    </ul>
+    <a href="book-appointment.html" class="btn btn-primary mobile-menu-cta" aria-label="Book an Appointment">Book Appointment</a>
+  </div>
+  </div>
+
+  <!-- Standard Inner Page Hero -->
+  <section class="page-hero" aria-label="Page Header">
+    <div class="container">
+      <div class="page-hero-content reveal">
+        <div class="breadcrumbs">
+          <a href="index.html">Home</a> <span>&rarr;</span> <span>Book Appointment</span>
+        </div>
+        <h1 class="page-title font-serif">Book Consultation</h1>
+        <p class="page-subtitle">Embark on your personalized healing pathway. Submit details for clinical scheduling.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN SCROLL CONTENT -->
+  <main id="main-content">
+
+    <!-- SECTION 1: APPOINTMENT FORM CARD -->
+    <section aria-label="Appointment Request Form">
+      <div class="container">
+        
+        <div class="appointment-container reveal">
+          <h3 class="cormorant">Schedule Your Consultation</h3>
+          <p class="form-intro">Provide details about your constitution and wellness goals. Our clinical desk will contact you to align your therapy calendar.</p>
+          
+          <form id="ayurq-booking-form" class="ayurq-booking-form" novalidate>
+            <div class="form-grid">
+              
+              <!-- Full Name -->
+              <div class="floating-group">
+                <input type="text" id="appt-name" name="from_name" class="floating-input" required placeholder=" ">
+                <label for="appt-name" class="floating-label">Full Name *</label>
+                <div class="error-msg">Please enter your full name</div>
+              </div>
+
+              <!-- Phone Number -->
+              <div class="floating-group">
+                <input type="tel" id="appt-phone" name="phone" class="floating-input" required placeholder=" ">
+                <label for="appt-phone" class="floating-label">Phone Number *</label>
+                <div class="error-msg">Please enter a valid 10-digit phone number</div>
+              </div>
+
+              <!-- Email Address -->
+              <div class="floating-group">
+                <input type="email" id="appt-email" name="email" class="floating-input" required placeholder=" ">
+                <label for="appt-email" class="floating-label">Email Address *</label>
+                <div class="error-msg">Please enter a valid email address</div>
+              </div>
+
+              <!-- Preferred Appointment Date -->
+              <div class="floating-group">
+                <input type="date" id="appt-date" name="date" class="floating-input" required placeholder=" ">
+                <label for="appt-date" class="floating-label">Preferred Date *</label>
+                <div class="error-msg">Please select a preferred appointment date</div>
+              </div>
+
+              <!-- Treatment Selection -->
+              <div class="floating-group full-width">
+                <select id="appt-treatment" name="treatment" class="floating-input" required>
+                  <option value="" disabled selected></option>
+                  <option value="General Consultation">General BAMS Physician Consultation</option>
+                  <option value="Panchakarma Detox">Panchakarma 5-Fold Detox Cycle</option>
+                  <option value="Pain & Spine Care">Chronic Joint / Spine Pain Care</option>
+                  <option value="Stress & Anxiety Relief">Shirodhara Stress & Anxiety Relief</option>
+                  <option value="Swarnaprashana Pediatrics">Monthly Swarnaprashana Immunization</option>
+                  <option value="Relaxation Package">Relaxation Wellness Package</option>
+                  <option value="Beauty Care Package">AyurQ Skin & Hair Beauty Package</option>
+                  <option value="Senior Citizen Care">Senior Citizens Health Restoration</option>
+                </select>
+                <label for="appt-treatment" class="floating-label">Select Treatment / Program *</label>
+                <div class="error-msg">Please select a treatment program</div>
+              </div>
+
+              <!-- Message -->
+              <div class="floating-group full-width">
+                <textarea id="appt-message" name="message" class="floating-input" required placeholder=" "></textarea>
+                <label for="appt-message" class="floating-label">Health Goals & Special Instructions *</label>
+                <div class="error-msg">Please share your symptoms or wellness goals</div>
+              </div>
+
+            </div>
+
+            <button type="submit" id="submit-btn" class="btn btn-primary submit-btn">
+              <span class="btn-text">Request Luxury Consultation</span>
+              <span class="btn-loader" aria-hidden="true">
+                <svg class="spinner" viewBox="0 0 50 50">
+                  <circle class="path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+                </svg>
+              </span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SECTION 2: TIMELINE FLOW -->
+    <section class="timeline-section" aria-label="How Booking Works">
+      <div class="container">
+        <div class="section-header reveal">
+          <span class="section-label">Seamless Flow</span>
+          <h2 class="section-title">Your Clinical Journey</h2>
+          <p class="section-desc">We respect your transition into health. See how simple and caring our alignment process is from forms to check-in.</p>
+        </div>
+
+        <div class="flow-timeline reveal-stagger">
+          <!-- Step 1 -->
+          <div class="flow-step reveal-item">
+            <div class="flow-node">1</div>
+            <h4 class="cormorant">Form Submitted</h4>
+            <p>Your physical details, symptoms, and slot options reach our Visakhapatnam clinical team database immediately.</p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="flow-step reveal-item">
+            <div class="flow-node">2</div>
+            <h4 class="cormorant">Medical Call-Back</h4>
+            <p>Our desk assistant calls you within 2 hours to discuss your constitution, assign BAMS physicians, and confirm dates.</p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="flow-step reveal-item">
+            <div class="flow-node">3</div>
+            <h4 class="cormorant">Consultation Confirmed</h4>
+            <p>A confirmed booking slip is sent via WhatsApp with guidelines on dietary prep and arrival routines.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3: QUICK CONTACT STRIP -->
+    <section class="quick-strip" aria-label="Immediate Contact Options">
+      <div class="container">
+        <div class="quick-strip-flex reveal">
+          <div class="quick-strip-item">
+            <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.27 11.4 11.4 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.58 1 1 0 0 1-.27 1.02l-2.2 2.2z"/></svg>
+            <span>Prefer a direct call?</span>
+            <a href="tel:8093526669">Dial 8093526669</a>
+          </div>
+          <div class="quick-strip-item">
+            <!-- Leaf SVG -->
+            <svg viewBox="0 0 24 24"><path d="M12.012 2C6.48 2 2 6.48 2 12.012c0 1.767.46 3.48 1.332 4.992L2 22l5.124-1.344c1.464.792 3.108 1.212 4.884 1.212 5.532 0 10.012-4.48 10.012-10.012C22.02 6.48 17.54 2 12.012 2z"/></svg>
+            <span>Immediate Chat Support?</span>
+            <a href="https://wa.me/918093526669" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Unified Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col reveal">
+          <a href="index.html" class="brand-logo footer-logo" aria-label="AyurQ Logo">
+            <img src="Logo.png" alt="AyurQ Logo" class="brand-logo-img">
+          </a>
+          <p class="footer-col-desc">
+            An award-winning clinical Ayurveda retreat sanctuary specializing in authentic treatments, personalized wellness programs, and holistic Panchakarma therapies. Rejuvenate naturally under clinical expertise.
+          </p>
+          <div class="social-icons">
+            <a href="#" class="social-icon" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.498 6.163a3.003 3.003 0 0 0-2.11-2.11C19.517 3.545 12 3.545 12 3.545s-7.517 0-9.388.508a3.003 3.003 0 0 0-2.11 2.11C0 8.033 0 12 0 12s0 3.967.502 5.837a3.003 3.003 0 0 0 2.11 2.11c1.871.508 9.388.508 9.388.508s7.517 0 9.388-.508a3.002 3.002 0 0 0 2.11-2.11C24 15.967 24 12 24 12s0-3.967-.502-5.837zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg></a>
+            <a href="#" class="social-icon" aria-label="Twitter"><svg viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 0 1-2.825.775 4.958 4.958 0 0 0 2.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 0 0-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 0 0-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 0 1-2.228-.616v.06a4.923 4.923 0 0 0 3.946 4.827 4.996 4.996 0 0 1-2.212.085 4.936 4.936 0 0 0 4.604 3.417 9.867 9.867 0 0 1-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 0 0 7.557 2.209c9.053 0 13.998-7.496 13.998-13.986 0-.21 0-.42-.015-.63A9.935 9.935 0 0 0 24 4.59z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Quick Links</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="treatments.html">Treatments</a></li>
+            <li><a href="departments.html">Departments</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="blog.html">Healing Talks</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+          </ul>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Treatments</h4>
+          <ul class="footer-links">
+            <li><a href="treatments.html#panchakarma">Panchakarma</a></li>
+            <li><a href="treatments.html#detox">Detox Therapy</a></li>
+            <li><a href="treatments.html#pain">Pain Relief</a></li>
+            <li><a href="treatments.html#stress">Stress Management</a></li>
+            <li><a href="treatments.html#skin">Skin & Hair Care</a></li>
+            <li><a href="treatments.html#rejuvenation">Rejuvenation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col reveal">
+          <h4>Contact & Location</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5z"/></svg>
+              <span>49-58-9/A, Green Park Colony, Seethammadara, Visakhapatnam, AP 530013</span>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M6.62 10.79a15.15 15.15 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.27 11.4 11.4 0 0 0 3.58.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.58 1 1 0 0 1-.27 1.02l-2.2 2.2z"/></svg>
+              <a href="tel:8093526669">8093526669</a>
+            </div>
+            <div class="contact-item">
+              <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+              <a href="mailto:ayurqvizag@gmail.com">ayurqvizag@gmail.com</a>
+            </div>
+          </div>
+          <form class="newsletter-form">
+            <p>Get Healing Insights in Your Inbox</p>
+            <div class="input-group">
+              <input type="email" placeholder="Your Email Address" aria-label="Email for Newsletter" required>
+              <button type="submit">Subscribe</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 AyurQ Ayurveda. All rights reserved.</p>
+        <p>Made with &hearts; in Visakhapatnam | Quality Driven Ayurveda</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/918093526669" class="whatsapp-btn" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24"><path d="M12.012 2C6.48 2 2 6.48 2 12.012c0 1.767.46 3.48 1.332 4.992L2 22l5.124-1.344c1.464.792 3.108 1.212 4.884 1.212 5.532 0 10.012-4.48 10.012-10.012C22.02 6.48 17.54 2 12.012 2zm6.18 13.908c-.24.672-1.224 1.236-1.74 1.308-.48.06-1.092.084-2.736-.588-2.1-1.02-3.444-3.144-3.552-3.288-.096-.144-.804-1.068-.804-2.028 0-.96.504-1.428.684-1.62.18-.192.396-.24.528-.24h.372c.12 0 .288-.048.444.324.168.408.576 1.404.624 1.5.048.096.084.216.012.36-.072.144-.108.24-.216.372-.108.12-.228.276-.324.372-.108.108-.228.228-.096.456.132.228.588.972 1.26 1.572.864.768 1.596 1.008 1.824 1.116.228.108.36.096.492-.06.132-.156.576-.672.732-.9.156-.228.312-.192.528-.108.216.084 1.368.648 1.608.768.24.12.396.18.456.288.06.108.06.636-.18 1.308z"/></svg>
+  </a>
+
+  <!-- CDN scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.36/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script src="js/main.js"></script>
+  
+  <!-- Select Min-Date Constraint, Float label logic, Custom Validation, and EmailJS -->
+  <script>
+    // Initialize EmailJS
+    emailjs.init("8tzIGKGKukf4lHRo-");
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Minimum Date Constraint
+      const dateInput = document.getElementById('appt-date');
+      if (dateInput) {
+        const today = new Date().toISOString().split('T')[0];
+        dateInput.min = today;
+      }
+
+      // 2. Floating Input Classes (.has-value tracking)
+      const floatingInputs = document.querySelectorAll('.floating-input');
+      floatingInputs.forEach(input => {
+        // Run initial check (in case of browser autocomplete or initial page load value)
+        setTimeout(() => {
+          if (input.value && input.value.trim() !== '') {
+            input.classList.add('has-value');
+          }
+        }, 100);
+
+        input.addEventListener('focus', () => {
+          input.classList.add('has-value');
+          // Clear error state when user starts typing/editing
+          input.closest('.floating-group').classList.remove('error');
+        });
+
+        input.addEventListener('blur', () => {
+          if (!input.value || input.value.trim() === '') {
+            input.classList.remove('has-value');
+          }
+        });
+
+        input.addEventListener('change', () => {
+          if (input.value && input.value.trim() !== '') {
+            input.classList.add('has-value');
+          } else {
+            input.classList.remove('has-value');
+          }
+        });
+      });
+
+      // 3. Custom Toast Notification Manager
+      const showToast = (title, message, type = 'success') => {
+        // Ensure container exists
+        let toastContainer = document.querySelector('.toast-container');
+        if (!toastContainer) {
+          toastContainer = document.createElement('div');
+          toastContainer.className = 'toast-container';
+          document.body.appendChild(toastContainer);
+        }
+
+        // Create toast element
+        const toast = document.createElement('div');
+        toast.className = `toast-notification toast-${type}`;
+        
+        const successIcon = `<svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>`;
+        const errorIcon = `<svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`;
+        const iconHtml = type === 'success' ? successIcon : errorIcon;
+        const closeIcon = `<svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>`;
+
+        toast.innerHTML = `
+          <div class="toast-icon">${iconHtml}</div>
+          <div class="toast-content">
+            <div class="toast-title">${title}</div>
+            <div class="toast-message">${message}</div>
+          </div>
+          <button type="button" class="toast-close" aria-label="Close notification">${closeIcon}</button>
+        `;
+
+        // Append to container
+        toastContainer.appendChild(toast);
+
+        // Animate entrance with GSAP
+        gsap.fromTo(toast, 
+          { x: 150, opacity: 0, scale: 0.8 }, 
+          { x: 0, opacity: 1, scale: 1, duration: 0.5, ease: 'back.out(1.5)' }
+        );
+
+        // Setup auto-dismiss
+        const dismissTimer = setTimeout(() => {
+          dismissToast(toast);
+        }, 5000);
+
+        // Bind manual dismiss button
+        toast.querySelector('.toast-close').addEventListener('click', () => {
+          clearTimeout(dismissTimer);
+          dismissToast(toast);
+        });
+      };
+
+      const dismissToast = (toast) => {
+        gsap.to(toast, {
+          x: 150,
+          opacity: 0,
+          scale: 0.8,
+          duration: 0.4,
+          ease: 'power3.in',
+          onComplete: () => {
+            toast.remove();
+            // Clean container if empty
+            const container = document.querySelector('.toast-container');
+            if (container && container.children.length === 0) {
+              container.remove();
+            }
+          }
+        });
+      };
+
+      // 4. Form Validation & Submission Orchestrator
+      const bookingForm = document.getElementById('ayurq-booking-form');
+      const submitBtn = document.getElementById('submit-btn');
+
+      if (bookingForm) {
+        bookingForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+
+          let isValid = true;
+          
+          const nameInput = document.getElementById('appt-name');
+          const emailInput = document.getElementById('appt-email');
+          const phoneInput = document.getElementById('appt-phone');
+          const dateInput = document.getElementById('appt-date');
+          const treatmentInput = document.getElementById('appt-treatment');
+          const messageInput = document.getElementById('appt-message');
+
+          // Clean error states
+          document.querySelectorAll('.floating-group').forEach(group => {
+            group.classList.remove('error');
+          });
+
+          // 1. Full Name Validation
+          if (!nameInput.value || nameInput.value.trim().length < 3) {
+            nameInput.closest('.floating-group').classList.add('error');
+            isValid = false;
+          }
+
+          // 2. Email Validation
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailInput.value || !emailRegex.test(emailInput.value.trim())) {
+            emailInput.closest('.floating-group').classList.add('error');
+            isValid = false;
+          }
+
+          // 3. Phone Validation (Indian phone number: 10 digits starting with 6-9)
+          const phoneRegex = /^[6789]\d{9}$/;
+          const cleanPhone = phoneInput.value.replace(/\s+/g, '').replace(/-/g, '').replace(/^\+91/, '');
+          if (!phoneInput.value || !phoneRegex.test(cleanPhone)) {
+            phoneInput.closest('.floating-group').classList.add('error');
+            isValid = false;
+          }
+
+          // 4. Date Validation
+          if (!dateInput.value) {
+            dateInput.closest('.floating-group').classList.add('error');
+            isValid = false;
+          }
+
+          // 5. Treatment Validation
+          if (!treatmentInput.value) {
+            treatmentInput.closest('.floating-group').classList.add('error');
+            isValid = false;
+          }
+
+          // 6. Message Validation
+          if (!messageInput.value || messageInput.value.trim().length < 5) {
+            messageInput.closest('.floating-group').classList.add('error');
+            isValid = false;
+          }
+
+          if (!isValid) {
+            showToast("Validation Error", "Please verify and correct all highlighted form fields.", "error");
+            
+            // GSAP wiggle animation for form container
+            gsap.fromTo('.appointment-container',
+              { x: -10 },
+              { x: 0, duration: 0.6, ease: 'elastic.out(2, 0.2)' }
+            );
+            return;
+          }
+
+          // Form is valid: show loader & start transmission
+          submitBtn.classList.add('loading');
+          submitBtn.setAttribute('disabled', 'true');
+
+          // EmailJS integration sendForm method
+          emailjs.sendForm(
+            'service_2emtbkw', 
+            'template_fwvxxnn', 
+            bookingForm
+          )
+          .then((response) => {
+            // Success response
+            showToast(
+              "Consultation Requested", 
+              "Your consultation request has been sent successfully.", 
+              "success"
+            );
+            
+            // Reset form
+            bookingForm.reset();
+            
+            // Reset floating labels active state (.has-value removal)
+            floatingInputs.forEach(input => {
+              input.classList.remove('has-value');
+            });
+            
+            // Restore button state
+            submitBtn.classList.remove('loading');
+            submitBtn.removeAttribute('disabled');
+          })
+          .catch((error) => {
+            // Error response
+            console.error('EmailJS Error:', error);
+            showToast(
+              "Submission Failed", 
+              "Something went wrong. Please try again.", 
+              "error"
+            );
+            
+            // Restore button state
+            submitBtn.classList.remove('loading');
+            submitBtn.removeAttribute('disabled');
+          });
+        });
+      }
+    });
+  </script>
+</body>
+</html>
