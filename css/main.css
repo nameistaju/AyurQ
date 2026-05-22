@@ -1666,8 +1666,50 @@ footer.site-footer .brand-logo-img {
 }
 
 /* 6. Mobile View Background Override */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   body {
     background-image: url('../texture-bg-mobile.png') !important;
   }
+}
+
+/* 7. High-Fidelity Mobile Menu Drawer & Chevron Upgrades */
+#mobile-menu .mobile-menu-drawer {
+  padding: 80px 24px 30px 24px !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+.mobile-menu-link svg {
+  width: 36px !important;
+  height: 36px !important;
+  padding: 10px !important;
+  border-radius: 50% !important;
+  background-color: rgba(248, 244, 234, 0.05) !important;
+  fill: currentColor !important;
+  transition: var(--transition-smooth) !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.mobile-menu-link svg:hover {
+  background-color: rgba(242, 140, 40, 0.2) !important;
+  color: var(--orange) !important;
+}
+
+.mobile-menu-item.active .mobile-menu-link svg {
+  transform: rotate(180deg) !important;
+  background-color: var(--orange) !important;
+  color: var(--white) !important;
+}
+
+.mobile-submenu {
+  padding: 5px 0 !important;
+}
+
+.mobile-submenu li a {
+  padding: 12px 20px !important;
+  font-size: 1.05rem !important;
+  border-bottom: 1px solid rgba(248,244,234,0.03) !important;
 }

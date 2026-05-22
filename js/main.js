@@ -128,43 +128,54 @@ function initMobileMenu() {
       }
     });
 
-    // Close mobile menu on clicking anchors (excluding dropdown headers)
-    const mobileLinks = mobileMenu.querySelectorAll('.mobile-menu-link:not(.has-sub)');
-    mobileLinks.forEach(link => {
-      link.addEventListener('click', () => {
+    // Event delegation for clicks inside the mobile drawer
+    const menuDrawer = mobileMenu.querySelector('.mobile-menu-drawer');
+    if (menuDrawer) {
+      menuDrawer.addEventListener('click', (e) => {
+        const link = e.target.closest('a');
+        if (!link) return;
+
+        const parentItem = link.parentElement;
+        const isDropdownParent = parentItem.classList.contains('mobile-menu-item-dropdown');
+
+        if (isDropdownParent) {
+          // If clicked specifically on the chevron SVG or path, toggle the submenu accordion
+          const isChevron = e.target.closest('svg') || e.target.tagName.toLowerCase() === 'svg' || e.target.tagName.toLowerCase() === 'path';
+          
+          if (isChevron) {
+            e.preventDefault();
+            e.stopPropagation();
+            
+            const submenu = parentItem.querySelector('.mobile-submenu');
+            const isActive = parentItem.classList.toggle('active');
+            
+            if (isActive) {
+              submenu.style.maxHeight = submenu.scrollHeight + 'px';
+            } else {
+              submenu.style.maxHeight = '0';
+            }
+
+            // Close other sibling dropdowns
+            const siblings = parentItem.parentElement.children;
+            Array.from(siblings).forEach(sib => {
+              if (sib !== parentItem && sib.classList.contains('mobile-menu-item-dropdown')) {
+                sib.classList.remove('active');
+                const sibSub = sib.querySelector('.mobile-submenu');
+                if (sibSub) sibSub.style.maxHeight = '0';
+              }
+            });
+            return;
+          }
+        }
+
+        // For all other links (submenu link clicks, home/gallery/contact click, or text navigation click on main dropdown links),
+        // let the navigation proceed and close the mobile menu automatically to reveal the scrolled page section.
         toggleBtn.classList.remove('open');
         mobileMenu.classList.remove('open');
         body.style.overflow = '';
         if (lenisInstance) lenisInstance.start();
       });
-    });
-
-    // Mobile submenu accordions
-    const dropdownToggles = mobileMenu.querySelectorAll('.mobile-menu-item-dropdown > .mobile-menu-link');
-    dropdownToggles.forEach(toggle => {
-      toggle.addEventListener('click', (e) => {
-        e.preventDefault();
-        const parent = toggle.parentElement;
-        const submenu = parent.querySelector('.mobile-submenu');
-        
-        const isActive = parent.classList.toggle('active');
-        if (isActive) {
-          submenu.style.maxHeight = submenu.scrollHeight + 'px';
-        } else {
-          submenu.style.maxHeight = '0';
-        }
-
-        // Close other sibling dropdowns
-        const siblings = parent.parentElement.children;
-        Array.from(siblings).forEach(sib => {
-          if (sib !== parent && sib.classList.contains('mobile-menu-item-dropdown')) {
-            sib.classList.remove('active');
-            const sibSub = sib.querySelector('.mobile-submenu');
-            if (sibSub) sibSub.style.maxHeight = '0';
-          }
-        });
-      });
-    });
+    }
   }
 }
 
