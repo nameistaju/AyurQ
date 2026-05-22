@@ -1664,3 +1664,10 @@ footer.site-footer .brand-logo-img {
 .faq-content-inner {
   padding: 0 30px 24px 30px !important;
 }
+
+/* 6. Mobile View Background Override */
+@media (max-width: 768px) {
+  body {
+    background-image: url('../texture-bg-mobile.png') !important;
+  }
+}

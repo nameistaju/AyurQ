@@ -1146,7 +1146,10 @@
     <!-- SECTION 1: HERO -->
     <section class="hero-section" aria-label="Welcome to AyurQ">
       <div class="hero-bg-wrapper">
-        <img src="hero-main.png" alt="AyurQ Premium Ayurveda Wellness" class="visual-image parallax-bg" style="width:100%; height:100%; object-fit:cover;">
+        <picture class="parallax-bg" style="width: 100%; height: 100%; display: block;">
+          <source srcset="hero-main-mobile.png" media="(max-width: 768px)">
+          <img src="hero-main.png" alt="AyurQ Premium Ayurveda Wellness" class="visual-image" style="width: 100%; height: 100%; object-fit: cover;">
+        </picture>
         <div class="hero-bg-overlay"></div>
       </div>
 
